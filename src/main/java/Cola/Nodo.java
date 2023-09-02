@@ -13,6 +13,10 @@ public class Nodo {
      */
     private Nodo next;
 
+    /**
+     * Constructor del nodo
+     * @param data el valor del nodo
+     */
     public Nodo(int data) {//De momento hago el nodo para int porque no se con que se va trabajar todavia
         this.data = data;
         next = null;
