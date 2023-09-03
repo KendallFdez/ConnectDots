@@ -1,4 +1,4 @@
-package Cola;
+package Utils.Cola;
 
 /**
  * Clase cola para poner a los jugadores que buscan partida

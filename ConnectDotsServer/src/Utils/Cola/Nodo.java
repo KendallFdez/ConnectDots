@@ -1,4 +1,4 @@
-package Cola;
+package Utils.Cola;
 
 /**
  * Clase nodo que contiene valores para añadirlos a una lista enlazada

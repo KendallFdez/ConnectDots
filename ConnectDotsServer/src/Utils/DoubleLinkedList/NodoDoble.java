@@ -1,4 +1,4 @@
-package DoubleLinkedList;
+package Utils.DoubleLinkedList;
 /**
  * Clase nodo que contiene valores para añadirlos a una lista doblemente enlazada
  */

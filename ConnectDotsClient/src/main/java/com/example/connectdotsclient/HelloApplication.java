@@ -1,4 +1,4 @@
-package interfaz.connectdots;
+package com.example.connectdotsclient;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
