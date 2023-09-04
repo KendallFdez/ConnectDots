@@ -1,3 +1,5 @@
+import Server.MiServidor;
+import Server.Recepcion;
 import Utils.Cola.Cola;
 import Utils.DoubleLinkedList.ListaDoble;
 
@@ -27,6 +29,15 @@ public class Main {
         int[] a = new int[8];
 
 
-        System.out.println("Hello world!");
+        Recepcion recepcion = new Recepcion();
+        MiServidor miusuario=new MiServidor(recepcion);
+
+        Thread mihilo2= new Thread(recepcion);
+
+        mihilo2.start();
+
+        Thread mihilo= new Thread(miusuario);
+
+        mihilo.start();
     }
 }
