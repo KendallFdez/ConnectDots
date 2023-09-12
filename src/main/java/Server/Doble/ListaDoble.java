@@ -4,7 +4,7 @@ package Server.Doble;
 /**
  * Clase listaDoble(doblemente enlazada) para implementar la malla del juego
  */
-public class ListaDoble {
+public class ListaDoble<T> {
     /**
      * Representa el primer elemento de la lista
      */
@@ -45,7 +45,7 @@ public class ListaDoble {
      * Inseta al final de la lista
      * @param value el valor a insertar
      */
-    public void insertLast(int value){
+    public void insertLast(T value){
         NodoDoble newNode = new NodoDoble(value);
         if(isEmpty()){
             head=newNode;
@@ -62,7 +62,7 @@ public class ListaDoble {
      * Inserta al principio de la lista
      * @param value el valor a insertar
      */
-    public void insertFirst(int value){
+    public void insertFirst(T value){
         NodoDoble newNode = new NodoDoble(value);
         if(isEmpty()) {
             tail = newNode;

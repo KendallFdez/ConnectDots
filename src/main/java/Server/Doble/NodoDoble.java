@@ -1,12 +1,15 @@
 package Server.Doble;
+
+import javafx.scene.control.Button;
+
 /**
  * Clase nodo que contiene valores para añadirlos a una lista doblemente enlazada
  */
-public class NodoDoble {
+public class NodoDoble<T> {
     /**
      * Representa el valo del nodo
      */
-    int data;
+    T data;
     /**
      * Representa el nodo que esta antes de este nodo
      */
@@ -20,7 +23,7 @@ public class NodoDoble {
      * Constructor del nodo
      * @param data el valor del nodo
      */
-    public NodoDoble(int data){
+    public NodoDoble(T data){
         this.data = data;
         next = null;
         previous = null;
@@ -29,14 +32,14 @@ public class NodoDoble {
     /**
      * @return Devuelve el valor del nodo
      */
-    public int getData() {
+    public T getData() {
         return data;
     }
 
     /**
      * @param data Cambia el valor del nodo
      */
-    public void setData(int data) {
+    public void setData(T data) {
         this.data = data;
     }
 
