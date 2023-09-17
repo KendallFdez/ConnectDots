@@ -1,6 +1,4 @@
-package Server.Doble;
-
-import javafx.scene.control.Button;
+package utils.Doble;
 
 /**
  * Clase nodo que contiene valores para añadirlos a una lista doblemente enlazada

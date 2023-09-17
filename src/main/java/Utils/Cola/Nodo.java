@@ -1,4 +1,4 @@
-package Server.Cola;
+package utils.Cola;
 
 /**
  * Clase nodo que contiene valores para añadirlos a una lista enlazada

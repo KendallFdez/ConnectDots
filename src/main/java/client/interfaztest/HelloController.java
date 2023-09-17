@@ -1,6 +1,6 @@
-package Client.interfaz;
+package client.interfaztest;
 
-import Client.socket.Connection;
+import client.socket.Connection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

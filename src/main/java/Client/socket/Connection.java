@@ -1,4 +1,4 @@
-package Client.socket;
+package client.socket;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -8,7 +8,7 @@ public class Connection {
 
     public static ServerConnection GetConnection()
     {
-        return Connection.server;
+        return server;
     }
     public static boolean Start()
     {
@@ -16,7 +16,7 @@ public class Connection {
         try {
             misocket = new Socket("127.0.0.1", 9999);
             ServerConnection cliente = new ServerConnection(misocket);
-            Connection.server = cliente;
+            server = cliente;
             new Thread(cliente).start();
             return true;
 
