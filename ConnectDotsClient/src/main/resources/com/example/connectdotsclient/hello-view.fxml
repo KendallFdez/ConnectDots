@@ -11,6 +11,12 @@
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
   </padding>
 
+<<<<<<< Updated upstream:ConnectDotsClient/src/main/resources/com/example/connectdotsclient/hello-view.fxml
   <Label fx:id="welcomeText"/>
   <Button text="Connect" onAction="#onHelloButtonClick"/>
+=======
+    <Label fx:id="welcomeText"/>
+    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Button text="EnviarMsj" onAction="#onSendButtonClick"/>
+>>>>>>> Stashed changes:src/main/resources/Client/interfaz/hello-view.fxml
 </VBox>
