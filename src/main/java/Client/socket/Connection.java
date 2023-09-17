@@ -4,14 +4,18 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class Connection {
-    private static ClienteConnection server;
+    private static ServerConnection server;
+
+    public static ServerConnection GetConnection()
+    {
+        return Connection.server;
+    }
     public static boolean Start()
     {
         Socket misocket = null;
         try {
             misocket = new Socket("127.0.0.1", 9999);
-            ClienteConnection cliente = new ClienteConnection(misocket);
-            cliente.Enviar_mensaje("hola connecion realizada");
+            ServerConnection cliente = new ServerConnection(misocket);
             Connection.server = cliente;
             new Thread(cliente).start();
             return true;

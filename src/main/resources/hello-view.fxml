@@ -11,4 +11,5 @@
 
     <Label fx:id="welcomeText"/>
     <Button text="Connect" onAction="#onHelloButtonClick"/>
+    <Button text="EnviarMsj" onAction="#onSendButtonClick"/>
 </VBox>

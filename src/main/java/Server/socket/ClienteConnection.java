@@ -1,6 +1,8 @@
 package Server.socket;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -19,11 +21,11 @@ public class ClienteConnection implements Runnable {
     /**
      * Representa una linea de salida de datos
      */
-    private OutputStreamWriter envioDatos;
+    private DataOutputStream envioDatos;
     /**
      * Representa una linea de entrada de datos
      */
-    private BufferedReader entradaDatos;
+    private DataInputStream entradaDatos;
     /**
      * Representa el socket del cliente
      */
@@ -50,14 +52,14 @@ public class ClienteConnection implements Runnable {
         this.mensajes_recibidos= new ConcurrentLinkedQueue<>();
 
     }
+
     /**
      * Recibe los datos de la linea de entrada de datos
      */
-    public BufferedReader getEntradaDatos() {
-        if(this.entradaDatos == null){
+    public DataInputStream getEntradaDatos() {
+        if (this.entradaDatos == null) {
             try {
-                this.entradaDatos = new BufferedReader(
-                        new InputStreamReader(this.socket.getInputStream()));
+                this.entradaDatos = new DataInputStream(this.socket.getInputStream());
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -65,13 +67,14 @@ public class ClienteConnection implements Runnable {
         }
         return entradaDatos;
     }
+
     /**
      * Envia los datos de la linea de salida de datos
      */
-    public OutputStreamWriter getEnvioDatos() {
-        if(this.envioDatos == null){
+    public DataOutputStream getEnvioDatos() {
+        if (this.envioDatos == null) {
             try {
-                this.envioDatos = new OutputStreamWriter(this.socket.getOutputStream());
+                this.envioDatos = new DataOutputStream(this.socket.getOutputStream());
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -92,12 +95,15 @@ public class ClienteConnection implements Runnable {
      * Crea una linea de envio y escribe un mensaje con los datos
      * @param mensaje La clase para la informacion de los mensajes
      */
-    public void Enviar_mensaje(String mensaje){
+    /**
+     * Crea una linea de envio y escribe un mensaje con los datos
+     *
+     * @param mensaje La clase para la informacion de los mensajes
+     */
+    public void Enviar_mensaje(String mensaje) {
         try {
-
+            this.getEnvioDatos().writeUTF(mensaje);
             this.getEnvioDatos().flush();
-
-            this.getEnvioDatos().write(mensaje);
 
         } catch (IOException e1) {
             // TODO Auto-generated catch block
@@ -140,30 +146,16 @@ public class ClienteConnection implements Runnable {
         return nick;
     }
 
-    /**
-     * @return Devuelve los datos leidos de la linea de entrada de datos
-     */
-    public String LeerEntrada(){
-
-        BufferedReader entradaDatos = this.getEntradaDatos();
+    public String LeerEntrada() {
+        DataInputStream entradaDatos = this.getEntradaDatos();
         try {
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = entradaDatos.readLine()) != null)
-                sb.append(line).append("\n");
-            return sb.toString();
-
+            return entradaDatos.readUTF();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
-
-        /**
-         * Se encarga de recibir constantemente mensajes y los añade a la lista de mensajes
-         */
-
     }
+
     @Override
     public void run() {
         System.out.println("Se inicio el run");
@@ -175,6 +167,7 @@ public class ClienteConnection implements Runnable {
                 if(this.mensajes_recibidos==null){
                     this.mensajes_recibidos= new ConcurrentLinkedQueue<>();
                 }
+                System.out.println(message);
 
                 this.mensajes_recibidos.offer(message);
             }

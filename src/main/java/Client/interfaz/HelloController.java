@@ -4,7 +4,7 @@ import Client.socket.Connection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class HelloController { //onSendButtonClick
     @FXML
     private Label welcomeText;
 
@@ -19,6 +19,11 @@ public class HelloController {
         {
             welcomeText.setText("Error de conexion");
         }
+
+    }
+    @FXML
+    protected void onSendButtonClick() {
+        Connection.GetConnection().Enviar_mensaje("Hola <<mensaje>>");
 
     }
 }
