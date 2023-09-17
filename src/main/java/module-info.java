@@ -1,12 +1,13 @@
-module com.example.connectdots {
+module client.interfaz {
     requires javafx.controls;
     requires javafx.fxml;
-
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires com.almasb.fxgl.all;
+    requires java.xml;
     requires org.json;
 
-    opens Client.interfaz to javafx.fxml;
-    exports Client.interfaz;
+
+    opens client.interfaz to javafx.fxml;
+    exports client.interfaz;
+
+    opens client.interfaztest to javafx.fxml;
+    exports client.interfaztest;
 }

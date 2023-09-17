@@ -1,4 +1,4 @@
-package com.example.connectdotsclient;
+package client.interfaz;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

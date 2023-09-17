@@ -1,8 +1,6 @@
-package Server;
-import Server.Cola.Cola;
-import Server.Doble.ListaDoble;
-import Server.socket.Recepcion;
-import Server.socket.Repartidor;
+package utils;
+import utils.Cola.Cola;
+import utils.Doble.ListaDoble;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,16 +26,5 @@ public class Main {
         lista.displayForward();
         int[] a = new int[8];
 
-
-        Repartidor repartidor = new Repartidor();
-        Recepcion recepcion=new Recepcion(repartidor);
-
-        Thread mihilo2= new Thread(repartidor);
-
-        mihilo2.start();
-
-        Thread mihilo= new Thread(recepcion);
-
-        mihilo.start();
     }
 }

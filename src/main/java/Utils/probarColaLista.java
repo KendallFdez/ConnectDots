@@ -1,8 +1,7 @@
-package Server;
+package utils;
 
-import Client.interfaz.Controller;
-import Server.Cola.Cola;
-import Server.Doble.ListaDoble;
+import utils.Cola.Cola;
+import utils.Doble.ListaDoble;
 
 public class probarColaLista {
     public static void main(String[] args) {
@@ -27,7 +26,6 @@ public class probarColaLista {
         micola.enqueue(40);
         System.out.println(micola.dequeue().getData()+" se elimino de la cola");
         System.out.println("El tamaño de la cola es "+micola.getSize());
-        Controller controller = new Controller();
-        controller.largoMatriz();
+
     }
 }

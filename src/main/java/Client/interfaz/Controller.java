@@ -1,8 +1,8 @@
-package Client.interfaz;
+package client.interfaz;
 
 import org.w3c.dom.events.MouseEvent;
 
-import Server.Doble.ListaDoble;
+import utils.Doble.ListaDoble;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
