@@ -29,17 +29,6 @@ public class Repartidor implements Runnable {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     /**
      * @return El nick de cada chat
      */
@@ -60,7 +49,7 @@ public class Repartidor implements Runnable {
      * Recorre el hashmap y envia el mensaje dado
      * @param mensaje La clase para los mensajes
      */
-    public void EnviarStringTodos(String mensaje){
+    /*public void EnviarStringTodos(String mensaje){
         Enumeration<String> llaves = this.conexiones.keys();
         while(llaves.hasMoreElements()){
             String llave = llaves.nextElement();
@@ -68,8 +57,17 @@ public class Repartidor implements Runnable {
                 this.conexiones.get(llave).Enviar_mensaje(mensaje);// obtiene el destinatario y envia el mensaje
             }//Falta mensaje comando que envie que alguien nuevo se conecto
         }
-    }
+    }*/
 
+    public void EnviarJSONATodos(String jsonString) {
+        Enumeration<String> llaves = this.conexiones.keys();
+        while (llaves.hasMoreElements()) {
+            String llave = llaves.nextElement();
+            if (this.conexiones.containsKey(llave)) {
+                this.conexiones.get(llave).EnviarJSON(jsonString);
+            }
+        }
+    }
     /**
      * Revisa la bandeja de cada conexion para ver si tienen mensajes pendientes y los envia
      */
@@ -80,12 +78,20 @@ public class Repartidor implements Runnable {
             while (llaves.hasMoreElements()) {
                 String llave = llaves.nextElement();
                 ClienteConnection conexion = this.conexiones.get(llave);
-                if(conexion.Revisar_bandeja()){
+                if (conexion.Revisar_bandeja()) {
                     String mensaje = conexion.Obtener_mensaje();
                     System.out.println(mensaje);
+
+                    // Verificar si el mensaje es un JSON
+                    if (mensaje.startsWith("JSON")) {
+                        String jsonString = conexion.RecibirJSON();
+                        if (jsonString != null) {
+                            // Procesar el JSON recibido
+                            System.out.println("JSON recibido: " + jsonString);
+                        }
+                    }
                 }
             }
         }
-
     }
 }

@@ -156,6 +156,31 @@ public class ClienteConnection implements Runnable {
         return null;
     }
 
+    public void EnviarJSON(String jsonString) {
+        try {
+            // Indicar que se está enviando JSON
+            this.getEnvioDatos().writeUTF("JSON");
+            // Enviar la cadena JSON
+            this.getEnvioDatos().writeUTF(jsonString);
+            this.getEnvioDatos().flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String RecibirJSON() {
+        try {
+            String tipoMensaje = this.getEntradaDatos().readUTF();
+            if (tipoMensaje.equals("JSON")) {
+                String jsonString = this.getEntradaDatos().readUTF();
+                return jsonString;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public void run() {
         System.out.println("Se inicio el run");
