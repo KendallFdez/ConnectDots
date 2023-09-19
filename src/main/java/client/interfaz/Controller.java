@@ -1,5 +1,6 @@
 package client.interfaz;
 
+import javafx.event.ActionEvent;
 import org.w3c.dom.events.MouseEvent;
 
 import utils.Doble.ListaDoble;
@@ -616,16 +617,22 @@ public class Controller {
     private Label nombreCuadrado9_9;
     @FXML
     private Button botonIniciar;
-    @FXML
-    void Iniciar(MouseEvent event) {
-        largoMatriz();
-        System.out.println("Hola");
-    }
+
     @FXML
     protected void cambiarColor(Button boton) {
         boton.setOnAction(event->{
             boton.setStyle("-fx-background-color: #ff0000; ");
             System.out.println("cambiarColor");
         });
+    }
+
+   
+    @FXML
+    public void Iniciar(ActionEvent actionEvent) {
+        largoMatriz();
+        System.out.println("Hola");
+    }
+
+    public void cambiarColor(ActionEvent actionEvent) {
     }
 }
