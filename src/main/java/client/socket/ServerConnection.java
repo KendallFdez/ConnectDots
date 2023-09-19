@@ -4,8 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.json.*;
@@ -113,19 +111,31 @@ public class ServerConnection implements Runnable {
 
     }
 
-    public void Recibir_JSON(String filePath) {
+    public void EnviarJSON(String jsonString) {
         try {
-            // Read the JSON file from the given file path
-            String jsonStr = new String(Files.readAllBytes(Paths.get(filePath)));
-            JSONObject jsonObj = new JSONObject(jsonStr);
-            // Print the JSON object
-            System.out.println(jsonObj.toString(4));
-            System.out.println("Recibe Json");
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
+            this.getEnvioDatos().writeUTF("JSON"); // Indicar que se está enviando JSON
+            this.getEnvioDatos().writeUTF(jsonString); // Enviar la cadena JSON
+            this.getEnvioDatos().flush();
+        } catch (IOException e1) {
+            System.out.println(e1.getMessage());
         }
     }
 
+    public void ProcesarJSON(String jsonString) {
+        try {
+            JSONObject receivedJson = new JSONObject(jsonString);
+
+            String valor1 = receivedJson.getString("clave1");
+            String valor2 = receivedJson.getString("clave2");
+
+            // Realiza acciones con los valores recibidos
+            System.out.println("Valor1: " + valor1);
+            System.out.println("Valor2: " + valor2);
+        } catch (JSONException e) {
+            // Si la cadena JSON no es válida, maneja la excepción
+            e.printStackTrace();
+        }
+    }
     /**
      * Devuelve el primer elemento de la lista de mensajes
      *
@@ -188,12 +198,15 @@ public class ServerConnection implements Runnable {
                 if (this.mensajes_recibidos == null) {
                     this.mensajes_recibidos = new ConcurrentLinkedQueue<>();
                 }
+
+                // Verificar si el mensaje es JSON
                 if (message.startsWith("JSON")) {
-                    String filePath = message.substring(5);
-                    this.Recibir_JSON(filePath);
+                    String jsonString = message.substring(5); // Quitar el prefijo "JSON"
+                    this.ProcesarJSON(jsonString); // Procesar la cadena JSON
                 } else {
                     this.mensajes_recibidos.offer(message);
                 }
+
                 System.out.println("Funciona");
             }
         } catch (Exception e) {
