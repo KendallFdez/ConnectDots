@@ -23,6 +23,14 @@ public class Controller {
     ListaDoble<Button> fila11 = new ListaDoble<Button>();
     ListaDoble<Button> fila12 = new ListaDoble<Button>();
 
+    ListaDoble<Label> filaNombres1 = new ListaDoble<Label>();
+    ListaDoble<Label> filaNombres3 = new ListaDoble<Label>();
+    ListaDoble<Label> filaNombres5 = new ListaDoble<Label>();
+    ListaDoble<Label> filaNombres7 = new ListaDoble<Label>();
+    ListaDoble<Label> filaNombres9 = new ListaDoble<Label>();
+    ListaDoble<Label> filaNombres11 = new ListaDoble<Label>();
+
+    ListaDoble<ListaDoble<Label>> matrizNombres = new ListaDoble<ListaDoble<Label>>();
     ListaDoble<ListaDoble<Button>> matrizJuego = new ListaDoble<ListaDoble<Button>>();
     private void configurarFila0() {
         fila0.insertLast(boton1_0);
@@ -254,6 +262,7 @@ public class Controller {
         añadirMatriz();
         System.out.println(matrizJuego.getLength());
         matrizJuego.displayForward();
+        System.out.println(1);
     }
     @FXML
     private Button boton0_1;
@@ -618,6 +627,70 @@ public class Controller {
     @FXML
     private Button botonIniciar;
 
+    private void configurarFilaNombres1() {
+        filaNombres1.insertLast(nombreCuadrado1_1);
+        filaNombres1.insertLast(nombreCuadrado3_1);
+        filaNombres1.insertLast(nombreCuadrado5_1);
+        filaNombres1.insertLast(nombreCuadrado7_1);
+        filaNombres1.insertLast(nombreCuadrado9_1);
+        filaNombres1.insertLast(nombreCuadrado11_1);
+    }
+    private void configurarFilaNombres3() {
+        filaNombres3.insertLast(nombreCuadrado1_3);
+        filaNombres3.insertLast(nombreCuadrado3_3);
+        filaNombres3.insertLast(nombreCuadrado5_3);
+        filaNombres3.insertLast(nombreCuadrado7_3);
+        filaNombres3.insertLast(nombreCuadrado9_3);
+        filaNombres3.insertLast(nombreCuadrado11_3);
+    }
+    private void configurarFilaNombres5() {
+        filaNombres5.insertLast(nombreCuadrado1_5);
+        filaNombres5.insertLast(nombreCuadrado3_5);
+        filaNombres5.insertLast(nombreCuadrado5_5);
+        filaNombres5.insertLast(nombreCuadrado7_5);
+        filaNombres5.insertLast(nombreCuadrado9_5);
+        filaNombres5.insertLast(nombreCuadrado11_5);
+    }
+    private void configurarFilaNombres7() {
+        filaNombres7.insertLast(nombreCuadrado1_7);
+        filaNombres7.insertLast(nombreCuadrado3_7);
+        filaNombres7.insertLast(nombreCuadrado5_7);
+        filaNombres7.insertLast(nombreCuadrado7_7);
+        filaNombres7.insertLast(nombreCuadrado9_7);
+        filaNombres7.insertLast(nombreCuadrado11_7);
+    }
+    private void configurarFilaNombres9() {
+        filaNombres9.insertLast(nombreCuadrado1_9);
+        filaNombres9.insertLast(nombreCuadrado3_9);
+        filaNombres9.insertLast(nombreCuadrado5_9);
+        filaNombres9.insertLast(nombreCuadrado7_9);
+        filaNombres9.insertLast(nombreCuadrado9_9);
+        filaNombres9.insertLast(nombreCuadrado11_9);
+    }
+    private void configurarFilaNombres11() {
+        filaNombres11.insertLast(nombreCuadrado1_11);
+        filaNombres11.insertLast(nombreCuadrado3_11);
+        filaNombres11.insertLast(nombreCuadrado5_11);
+        filaNombres11.insertLast(nombreCuadrado7_11);
+        filaNombres11.insertLast(nombreCuadrado9_11);
+        filaNombres11.insertLast(nombreCuadrado11_11);
+    }
+    public void añadirMatrizNombres() {
+        matrizNombres.insertLast(filaNombres1);
+        matrizNombres.insertLast(filaNombres3);
+        matrizNombres.insertLast(filaNombres5);
+        matrizNombres.insertLast(filaNombres7);
+        matrizNombres.insertLast(filaNombres9);
+        matrizNombres.insertLast(filaNombres11);
+    }
+    public void iniciarMatrizNombres() {
+        System.out.println(matrizNombres.getLength());
+        añadirMatrizNombres();
+        System.out.println(matrizNombres.getLength());
+        matrizNombres.displayForward();
+        System.out.println(2);
+    }
+
     @FXML
     protected void cambiarColor(Button boton) {
         boton.setOnAction(event->{
@@ -630,6 +703,7 @@ public class Controller {
     @FXML
     public void Iniciar(ActionEvent actionEvent) {
         largoMatriz();
+        iniciarMatrizNombres();
         System.out.println("Hola");
     }
 
