@@ -134,5 +134,22 @@ public class ListaDoble<T> {
             }
         }
     }
+
+    public NodoDoble<T> obtenerNodoPorIndice(int i){
+        if(i<0){
+            return null;
+        }
+        NodoDoble temp=head;
+        while (temp != null) {
+            if(i==0) {
+                return temp;
+            }
+            if(temp.getNext()!=null) {
+                i--;
+                temp = temp.getNext();
+            }
+        }
+        return null;
+    }
 }
 

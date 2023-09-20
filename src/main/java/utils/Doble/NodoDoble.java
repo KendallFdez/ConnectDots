@@ -5,7 +5,7 @@ package utils.Doble;
  */
 public class NodoDoble<T> {
     /**
-     * Representa el valo del nodo
+     * Representa el valor del nodo
      */
     T data;
     /**
