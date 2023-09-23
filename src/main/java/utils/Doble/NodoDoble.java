@@ -44,7 +44,7 @@ public class NodoDoble<T> {
     /**
      * @return Devuelve el nodo anterior
      */
-    public NodoDoble getPrevious() {
+    public NodoDoble<T> getPrevious() {
         return previous;
     }
 
@@ -58,7 +58,7 @@ public class NodoDoble<T> {
     /**
      * @return Devuelve el nodo siguiente
      */
-    public NodoDoble getNext() {
+    public NodoDoble<T> getNext() {
         return next;
     }
 

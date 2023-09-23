@@ -8,7 +8,12 @@ public class ListaDoble<T> {
     /**
      * Representa el primer elemento de la lista
      */
-    private NodoDoble head;
+    private NodoDoble<T> head;
+
+    public NodoDoble<T> getHead() {
+        return head;
+    }
+
     /**
      * Representa el ultimo elemento de la lista
      */
@@ -46,7 +51,7 @@ public class ListaDoble<T> {
      * @param value el valor a insertar
      */
     public void insertLast(T value){
-        NodoDoble newNode = new NodoDoble(value);
+        NodoDoble<T> newNode = new NodoDoble<T>(value);
         if(isEmpty()){
             head=newNode;
             tail=newNode;
@@ -63,7 +68,7 @@ public class ListaDoble<T> {
      * @param value el valor a insertar
      */
     public void insertFirst(T value){
-        NodoDoble newNode = new NodoDoble(value);
+        NodoDoble<T> newNode = new NodoDoble<T>(value);
         if(isEmpty()) {
             tail = newNode;
             head = newNode;
@@ -122,7 +127,7 @@ public class ListaDoble<T> {
         if(head==null){
             return;
         }
-        NodoDoble temp=head;
+        NodoDoble<T> temp=head;
         System.out.print("[");
         while (temp != null) {
             if(temp.getNext()!=null) {
@@ -139,7 +144,7 @@ public class ListaDoble<T> {
         if(i<0){
             return null;
         }
-        NodoDoble temp=head;
+        NodoDoble<T> temp=head;
         while (temp != null) {
             if(i==0) {
                 return temp;

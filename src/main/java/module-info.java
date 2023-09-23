@@ -10,4 +10,6 @@ module client.interfaz {
 
     opens client.interfaztest to javafx.fxml;
     exports client.interfaztest;
+    exports server.modelo;
+    exports utils.Doble;
 }
