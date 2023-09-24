@@ -1,17 +1,14 @@
 package server;
 
 import server.socket.Recepcion;
-import server.socket.Repartidor;
 public class ServerRunner {
     public static void main(String[] args) {
-        Repartidor repartidor = new Repartidor();
-        Recepcion recepcion=new Recepcion(repartidor);
+        Juego juego = new Juego();
+        Recepcion recepcion=new Recepcion();
+        Inicializador inicializador = new Inicializador(recepcion, juego);
 
-        Thread mihilo2= new Thread(repartidor);
-
-        mihilo2.start();
-        Thread mihilo= new Thread(recepcion);
-
-        mihilo.start();
+        new Thread(juego).start();
+        new Thread(recepcion).start();
+        inicializador.ejecutar();
     }
 }

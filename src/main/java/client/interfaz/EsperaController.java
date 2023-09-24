@@ -1,5 +1,6 @@
 package client.interfaz;
 
+import client.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,11 +29,6 @@ public class EsperaController {
 
 
     @FXML
-    public void getNombre(ActionEvent event){
-        jugadores.insertLast(campoNombre.getText());
-        System.out.println(campoNombre.getText());
-    }
-    @FXML
     public void actualizarPosicion(ActionEvent event){
         posicionCola.setText(String.valueOf(jugadores.getNodePosition(campoNombre.getText())));
         System.out.println(jugadores.getNodePosition(campoNombre.getText()));
@@ -40,9 +36,9 @@ public class EsperaController {
     public ListaDoble<String> getJugadores() {
         return jugadores;
     }
-    @FXML
-    public void iniciarJuego(ActionEvent event) {
-        String nombreUsuario = campoNombre.getText();
+
+    public void CambiarPantalla()
+    {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game1.fxml"));
             Stage stage= new Stage();
@@ -52,9 +48,29 @@ public class EsperaController {
             stage.show();
 
             GameController gameController = fxmlLoader.getController();
-            gameController.cambiarNombre(nombreUsuario);
+            Juego.GetInstance().setGameController(gameController);
+            gameController.cambiarNombre(Juego.GetInstance().getUsuario().getNombre());
+            gameController.configurarPantalla();
         }catch (Exception e){
             System.out.println("No se puede inicar la ventana del juego");
         }
+
+    }
+    @FXML
+    public void iniciarJuego(ActionEvent event) {
+        if(campoNombre.getText().isEmpty())
+        {
+            return;
+        }
+
+        Juego.GetInstance().Conectarse(campoNombre.getText());
+
+        String nombreUsuario = campoNombre.getText();
+        campoNombre.setDisable(true);
+        botonAbrir.setText("Esperando mas jugadores");
+        botonAbrir.setPrefWidth(140);
+        botonAbrir.setLayoutX(230);
+        botonAbrir.setDisable(true);
+        Juego.GetInstance().setEsperaController(this);
     }
 }

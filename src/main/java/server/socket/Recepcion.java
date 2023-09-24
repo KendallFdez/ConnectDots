@@ -1,5 +1,8 @@
 package server.socket;
 
+import server.modelo.Cliente;
+import utils.Cola.Cola;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,19 +12,16 @@ import java.net.Socket;
  * Clase de servidor que se encarga de recibir los mensajes y reenviarlos
  */
 public class Recepcion implements Runnable {
-    /**
-     * Representa una instancia de la clase encargada de recibir los mensajes
-     */
-    public Repartidor repartidor;
+
+
+    public int cantidadUsuariosConectados;
+
+    public Cola<Cliente> clienteCola;
 
     /**
      * Crea una instancia de servidor usando una recepcion
-     * @param repartidor
      */
-    public Recepcion(Repartidor repartidor){
-
-        this.repartidor = repartidor;
-
+    public Recepcion(){
     }
 
     /**
@@ -37,20 +37,14 @@ public class Recepcion implements Runnable {
             System.out.println("Usando el puerto: " + servidor.getLocalPort());
 
             while(true){
-//guardar variable mi usuario en recepcion,
                 Socket misocket = servidor.accept();
 
-                ClienteConnection miusuario=new ClienteConnection("nick", "ip", misocket);
-
-                //repartidor.AgregarConexion(miusuario);
-                //String mensajeMetadata = miusuario.LeerEntrada();
-                //System.out.println(mensajeMetadata);
-
-                Thread mihilo= new Thread(miusuario);
-
-                mihilo.start();
-
-
+                ClienteConnection conexcion=new ClienteConnection("nick", "ip", misocket);
+                int usuarioId = this.cantidadUsuariosConectados;
+                this.cantidadUsuariosConectados ++;
+                String mensajeMetadata = conexcion.LeerEntrada();
+                Cliente cliente = new Cliente(conexcion, mensajeMetadata, usuarioId);
+                clienteCola.enqueue(cliente);
             }
 
         } catch (IOException e) {

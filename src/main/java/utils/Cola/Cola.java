@@ -3,15 +3,15 @@ package utils.Cola;
 /**
  * Clase cola para poner a los jugadores que buscan partida
  */
-public class Cola {
+public class Cola<T> {
     /**
      * Representa el ultimo elmento de la cola
      */
-    private Nodo rear;
+    private Nodo<T> rear;
     /**
      * Representa el primer elmento de la cola
      */
-    private Nodo front;
+    private Nodo<T> front;
     /**
      * Representa la cantidad de elementos de la cola
      */
@@ -40,8 +40,8 @@ public class Cola {
     /**
      * @param element Añade un nuevo elemento al final de la cola
      */
-    public void enqueue(int element){
-        Nodo nodoNuevo =new Nodo(element);
+    public void enqueue(T element){
+        Nodo<T> nodoNuevo =new Nodo<T>(element);
         if(front==null){
             rear= nodoNuevo;
             front= nodoNuevo;
@@ -56,15 +56,15 @@ public class Cola {
     /**
      * @return Elimina el primer elemento de la cola y lo devuelve
      */
-    public Nodo dequeue(){
-        Nodo nodoEliminado = null;
+    public Nodo<T> dequeue(){
+        Nodo<T> nodoEliminado = null;
         if(front!=null){
             if(front.getNext()!=null){
-                nodoEliminado =new Nodo(front.getData());
+                nodoEliminado =new Nodo<T>(front.getData());
                 front=front.getNext();
                 size--;
             }else{
-                nodoEliminado =new Nodo(front.getData());
+                nodoEliminado =new Nodo<T>(front.getData());
                 front=null;
                 rear=null;
                 size--;
@@ -76,10 +76,10 @@ public class Cola {
     /**
      * @return Devuelve el primer elemento de la cola sin eliminarlo
      */
-    public Nodo peek(){
-        Nodo primerNodo = null;
+    public Nodo<T> peek(){
+        Nodo<T> primerNodo = null;
         if(!isEmpty()){
-            primerNodo = new Nodo(front.getData());
+            primerNodo = new Nodo<T>(front.getData());
         }
         return primerNodo;
     }

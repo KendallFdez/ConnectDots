@@ -6,263 +6,199 @@ import utils.Doble.ListaDoble;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import utils.Doble.NodoDoble;
 
 public class GameController {
-    ListaDoble<Button> fila0 = new ListaDoble<Button>();
-    ListaDoble<Button> fila1 = new ListaDoble<Button>();
-    ListaDoble<Button> fila2 = new ListaDoble<Button>();
-    ListaDoble<Button> fila3= new ListaDoble<Button>();
-    ListaDoble<Button> fila4 = new ListaDoble<Button>();
-    ListaDoble<Button> fila5 = new ListaDoble<Button>();
-    ListaDoble<Button> fila6 = new ListaDoble<Button>();
-    ListaDoble<Button> fila7 = new ListaDoble<Button>();
-    ListaDoble<Button> fila8 = new ListaDoble<Button>();
-    ListaDoble<Button> fila9 = new ListaDoble<Button>();
-    ListaDoble<Button> fila10 = new ListaDoble<Button>();
-    ListaDoble<Button> fila11 = new ListaDoble<Button>();
-    ListaDoble<Button> fila12 = new ListaDoble<Button>();
 
-    ListaDoble<Label> filaNombres1 = new ListaDoble<Label>();
-    ListaDoble<Label> filaNombres3 = new ListaDoble<Label>();
-    ListaDoble<Label> filaNombres5 = new ListaDoble<Label>();
-    ListaDoble<Label> filaNombres7 = new ListaDoble<Label>();
-    ListaDoble<Label> filaNombres9 = new ListaDoble<Label>();
-    ListaDoble<Label> filaNombres11 = new ListaDoble<Label>();
+    ListaDoble<Label> listaCuadros = new ListaDoble<Label>();
+    ListaDoble<Button> lineasVerticales = new ListaDoble<Button>();
+    ListaDoble<Button> lineasHorizontales = new ListaDoble<Button>();
 
-    ListaDoble<ListaDoble<Label>> matrizNombres = new ListaDoble<ListaDoble<Label>>();
-    ListaDoble<ListaDoble<Button>> matrizJuego = new ListaDoble<ListaDoble<Button>>();
-    private void configurarFila0() {
-        fila0.insertLast(boton1_0);
-        fila0.insertLast(boton3_0);
-        fila0.insertLast(boton5_0);
-        fila0.insertLast(boton7_0);
-        fila0.insertLast(boton9_0);
-        fila0.insertLast(boton11_0);
-        cambiarColor(boton1_0);
-        cambiarColor(boton3_0);
-        cambiarColor(boton5_0);
-        cambiarColor(boton7_0);
-        cambiarColor(boton9_0);
-        cambiarColor(boton11_0);
-
-    }
-    private void configurarFila1() {
-        fila1.insertLast(boton0_1);
-        fila1.insertLast(boton2_1);
-        fila1.insertLast(boton4_1);
-        fila1.insertLast(boton6_1);
-        fila1.insertLast(boton8_1);
-        fila1.insertLast(boton10_1);
-        fila1.insertLast(boton12_1);
-        cambiarColor(boton0_1);
-        cambiarColor(boton2_1);
-        cambiarColor(boton4_1);
-        cambiarColor(boton6_1);
-        cambiarColor(boton8_1);
-        cambiarColor(boton10_1);
-        cambiarColor(boton12_1);
-
-    }
-    private void configurarFila2() {
-        fila2.insertLast(boton1_2);
-        fila2.insertLast(boton3_2);
-        fila2.insertLast(boton5_2);
-        fila2.insertLast(boton7_2);
-        fila2.insertLast(boton9_2);
-        fila2.insertLast(boton11_2);
-        cambiarColor(boton1_2);
-        cambiarColor(boton3_2);
-        cambiarColor(boton5_2);
-        cambiarColor(boton7_2);
-        cambiarColor(boton9_2);
-        cambiarColor(boton11_2);
-    }
-    private void configurarFila3() {
-        fila3.insertLast(boton0_3);
-        fila3.insertLast(boton2_3);
-        fila3.insertLast(boton4_3);
-        fila3.insertLast(boton6_3);
-        fila3.insertLast(boton8_3);
-        fila3.insertLast(boton10_3);
-        fila3.insertLast(boton12_3);
-        cambiarColor(boton0_3);
-        cambiarColor(boton2_3);
-        cambiarColor(boton4_3);
-        cambiarColor(boton6_3);
-        cambiarColor(boton8_3);
-        cambiarColor(boton10_3);
-        cambiarColor(boton12_3);
-    }
-    private void configurarFila4() {
-        fila4.insertLast(boton1_4);
-        fila4.insertLast(boton3_4);
-        fila4.insertLast(boton5_4);
-        fila4.insertLast(boton7_4);
-        fila4.insertLast(boton9_4);
-        fila4.insertLast(boton11_4);
-        cambiarColor(boton1_4);
-        cambiarColor(boton3_4);
-        cambiarColor(boton5_4);
-        cambiarColor(boton7_4);
-        cambiarColor(boton9_4);
-        cambiarColor(boton11_4);
-    }
-    private void configurarFila5() {
-        fila5.insertLast(boton0_5);
-        fila5.insertLast(boton2_5);
-        fila5.insertLast(boton4_5);
-        fila5.insertLast(boton6_5);
-        fila5.insertLast(boton8_5);
-        fila5.insertLast(boton10_5);
-        fila5.insertLast(boton12_5);
-        cambiarColor(boton0_5);
-        cambiarColor(boton2_5);
-        cambiarColor(boton4_5);
-        cambiarColor(boton6_5);
-        cambiarColor(boton8_5);
-        cambiarColor(boton10_5);
-        cambiarColor(boton12_5);
-    }
-    private void configurarFila6() {
-        fila6.insertLast(boton1_6);
-        fila6.insertLast(boton3_6);
-        fila6.insertLast(boton5_6);
-        fila6.insertLast(boton7_6);
-        fila6.insertLast(boton9_6);
-        fila6.insertLast(boton11_6);
-        cambiarColor(boton1_6);
-        cambiarColor(boton3_6);
-        cambiarColor(boton5_6);
-        cambiarColor(boton7_6);
-        cambiarColor(boton9_6);
-        cambiarColor(boton11_6);
-    }
-    private void configurarFila7() {
-        fila7.insertLast(boton0_7);
-        fila7.insertLast(boton2_7);
-        fila7.insertLast(boton4_7);
-        fila7.insertLast(boton6_7);
-        fila7.insertLast(boton8_7);
-        fila7.insertLast(boton10_7);
-        fila7.insertLast(boton12_7);
-        cambiarColor(boton0_7);
-        cambiarColor(boton2_7);
-        cambiarColor(boton4_7);
-        cambiarColor(boton6_7);
-        cambiarColor(boton8_7);
-        cambiarColor(boton10_7);
-        cambiarColor(boton12_7);
-    }
-    private void configurarFila8() {
-        fila8.insertLast(boton1_8);
-        fila8.insertLast(boton3_8);
-        fila8.insertLast(boton5_8);
-        fila8.insertLast(boton7_8);
-        fila8.insertLast(boton9_8);
-        fila8.insertLast(boton11_8);
-        cambiarColor(boton1_8);
-        cambiarColor(boton3_8);
-        cambiarColor(boton5_8);
-        cambiarColor(boton7_8);
-        cambiarColor(boton9_8);
-        cambiarColor(boton11_8);
-
-    }
-    private void configurarFila9() {
-        fila9.insertLast(boton0_9);
-        fila9.insertLast(boton2_9);
-        fila9.insertLast(boton4_9);
-        fila9.insertLast(boton6_9);
-        fila9.insertLast(boton8_9);
-        fila9.insertLast(boton10_9);
-        fila9.insertLast(boton12_9);
-        cambiarColor(boton0_9);
-        cambiarColor(boton2_9);
-        cambiarColor(boton4_9);
-        cambiarColor(boton6_9);
-        cambiarColor(boton8_9);
-        cambiarColor(boton10_9);
-        cambiarColor(boton12_9);
-    }
-    private void configurarFila10() {
-        fila10.insertLast(boton1_10);
-        fila10.insertLast(boton3_10);
-        fila10.insertLast(boton5_10);
-        fila10.insertLast(boton7_10);
-        fila10.insertLast(boton9_10);
-        fila10.insertLast(boton11_10);
-        cambiarColor(boton1_10);
-        cambiarColor(boton3_10);
-        cambiarColor(boton5_10);
-        cambiarColor(boton7_10);
-        cambiarColor(boton9_10);
-        cambiarColor(boton11_10);
-    }
-    private void configurarFila11() {
-        fila11.insertLast(boton0_11);
-        fila11.insertLast(boton2_11);
-        fila11.insertLast(boton4_11);
-        fila11.insertLast(boton6_11);
-        fila11.insertLast(boton8_11);
-        fila11.insertLast(boton10_11);
-        fila11.insertLast(boton12_11);
-        cambiarColor(boton0_11);
-        cambiarColor(boton2_11);
-        cambiarColor(boton4_11);
-        cambiarColor(boton6_11);
-        cambiarColor(boton8_11);
-        cambiarColor(boton10_11);
-        cambiarColor(boton12_11);
-    }
-    private void configurarFila12() {
-        fila12.insertLast(boton1_12);
-        fila12.insertLast(boton3_12);
-        fila12.insertLast(boton5_12);
-        fila12.insertLast(boton7_12);
-        fila12.insertLast(boton9_12);
-        fila12.insertLast(boton11_12);
-        cambiarColor(boton1_12);
-        cambiarColor(boton3_12);
-        cambiarColor(boton5_12);
-        cambiarColor(boton7_12);
-        cambiarColor(boton9_12);
-        cambiarColor(boton11_12);
-    }
-    private void añadirMatriz() {
-        configurarFila0();
-        configurarFila1();
-        configurarFila2();
-        configurarFila3();
-        configurarFila4();
-        configurarFila5();
-        configurarFila6();
-        configurarFila7();
-        configurarFila8();
-        configurarFila9();
-        configurarFila10();
-        configurarFila10();
-        configurarFila12();
-        matrizJuego.insertLast(fila1);
-        matrizJuego.insertLast(fila2);
-        matrizJuego.insertLast(fila3);
-        matrizJuego.insertLast(fila4);
-        matrizJuego.insertLast(fila5);
-        matrizJuego.insertLast(fila6);
-        matrizJuego.insertLast(fila7);
-        matrizJuego.insertLast(fila8);
-        matrizJuego.insertLast(fila9);
-        matrizJuego.insertLast(fila10);
-        matrizJuego.insertLast(fila11);
-        matrizJuego.insertLast(fila12);
+    public void configurarCambiarColor(ListaDoble<Button> botones, String tipo)
+    {
+        NodoDoble<Button> nodoDoble = botones.getHead();
+        int index = 0;
+        while(nodoDoble != null)
+        {
+            this.cambiarColor(nodoDoble.getData(), index, tipo);
+            index ++;
+            nodoDoble = nodoDoble.getNext();
+        }
     }
 
-    public void largoMatriz() {
-        System.out.println(matrizJuego.getLength());
-        añadirMatriz();
-        System.out.println(matrizJuego.getLength());
-        matrizJuego.displayForward();
-        System.out.println(1);
+    public void configurarPantalla()
+    {
+        this.configurarLineasHorizontales();
+        this.configurarLineasVerticales();
+        this.configurarCuadros();
+        this.configurarCambiarColor(this.lineasHorizontales, "horizontal");
+        this.configurarCambiarColor(this.lineasVerticales, "vertical");
     }
+    private void configurarLineasHorizontales() {
+        //fila horizontales 1
+        lineasHorizontales.insertLast(boton1_0);
+        lineasHorizontales.insertLast(boton3_0);
+        lineasHorizontales.insertLast(boton5_0);
+        lineasHorizontales.insertLast(boton7_0);
+        lineasHorizontales.insertLast(boton9_0);
+        lineasHorizontales.insertLast(boton11_0);
+
+        //fila horizontales 2
+        lineasHorizontales.insertLast(boton1_2);
+        lineasHorizontales.insertLast(boton3_2);
+        lineasHorizontales.insertLast(boton5_2);
+        lineasHorizontales.insertLast(boton7_2);
+        lineasHorizontales.insertLast(boton9_2);
+        lineasHorizontales.insertLast(boton11_2);
+
+        //fila horizontales 3
+        lineasHorizontales.insertLast(boton1_4);
+        lineasHorizontales.insertLast(boton3_4);
+        lineasHorizontales.insertLast(boton5_4);
+        lineasHorizontales.insertLast(boton7_4);
+        lineasHorizontales.insertLast(boton9_4);
+        lineasHorizontales.insertLast(boton11_4);
+
+        //fila horizontales 4
+        lineasHorizontales.insertLast(boton1_6);
+        lineasHorizontales.insertLast(boton3_6);
+        lineasHorizontales.insertLast(boton5_6);
+        lineasHorizontales.insertLast(boton7_6);
+        lineasHorizontales.insertLast(boton9_6);
+        lineasHorizontales.insertLast(boton11_6);
+
+        //fila horizontales 5
+        lineasHorizontales.insertLast(boton1_8);
+        lineasHorizontales.insertLast(boton3_8);
+        lineasHorizontales.insertLast(boton5_8);
+        lineasHorizontales.insertLast(boton7_8);
+        lineasHorizontales.insertLast(boton9_8);
+        lineasHorizontales.insertLast(boton11_8);
+
+        //fila horizontales 6
+        lineasHorizontales.insertLast(boton1_10);
+        lineasHorizontales.insertLast(boton3_10);
+        lineasHorizontales.insertLast(boton5_10);
+        lineasHorizontales.insertLast(boton7_10);
+        lineasHorizontales.insertLast(boton9_10);
+        lineasHorizontales.insertLast(boton11_10);
+
+        //fila horizontales 7
+        lineasHorizontales.insertLast(boton1_12);
+        lineasHorizontales.insertLast(boton3_12);
+        lineasHorizontales.insertLast(boton5_12);
+        lineasHorizontales.insertLast(boton7_12);
+        lineasHorizontales.insertLast(boton9_12);
+        lineasHorizontales.insertLast(boton11_12);
+    }
+    private void configurarLineasVerticales() {
+        //fila verticales 1
+        lineasVerticales.insertLast(boton0_1);
+        lineasVerticales.insertLast(boton2_1);
+        lineasVerticales.insertLast(boton4_1);
+        lineasVerticales.insertLast(boton6_1);
+        lineasVerticales.insertLast(boton8_1);
+        lineasVerticales.insertLast(boton10_1);
+        lineasVerticales.insertLast(boton12_1);
+
+        //fila verticales 2
+        lineasVerticales.insertLast(boton0_3);
+        lineasVerticales.insertLast(boton2_3);
+        lineasVerticales.insertLast(boton4_3);
+        lineasVerticales.insertLast(boton6_3);
+        lineasVerticales.insertLast(boton8_3);
+        lineasVerticales.insertLast(boton10_3);
+        lineasVerticales.insertLast(boton12_3);
+
+        //fila verticales 3
+        lineasVerticales.insertLast(boton0_5);
+        lineasVerticales.insertLast(boton2_5);
+        lineasVerticales.insertLast(boton4_5);
+        lineasVerticales.insertLast(boton6_5);
+        lineasVerticales.insertLast(boton8_5);
+        lineasVerticales.insertLast(boton10_5);
+        lineasVerticales.insertLast(boton12_5);
+
+        //fila verticales 4
+        lineasVerticales.insertLast(boton0_7);
+        lineasVerticales.insertLast(boton2_7);
+        lineasVerticales.insertLast(boton4_7);
+        lineasVerticales.insertLast(boton6_7);
+        lineasVerticales.insertLast(boton8_7);
+        lineasVerticales.insertLast(boton10_7);
+        lineasVerticales.insertLast(boton12_7);
+
+        //fila verticales 5
+        lineasVerticales.insertLast(boton0_9);
+        lineasVerticales.insertLast(boton2_9);
+        lineasVerticales.insertLast(boton4_9);
+        lineasVerticales.insertLast(boton6_9);
+        lineasVerticales.insertLast(boton8_9);
+        lineasVerticales.insertLast(boton10_9);
+        lineasVerticales.insertLast(boton12_9);
+
+        //fila verticales 6
+        lineasVerticales.insertLast(boton0_11);
+        lineasVerticales.insertLast(boton2_11);
+        lineasVerticales.insertLast(boton4_11);
+        lineasVerticales.insertLast(boton6_11);
+        lineasVerticales.insertLast(boton8_11);
+        lineasVerticales.insertLast(boton10_11);
+        lineasVerticales.insertLast(boton12_11);
+
+    }
+
+    private void configurarCuadros() {
+        //fila cuadros 1
+        listaCuadros.insertLast(nombreCuadrado1_1);
+        listaCuadros.insertLast(nombreCuadrado3_1);
+        listaCuadros.insertLast(nombreCuadrado5_1);
+        listaCuadros.insertLast(nombreCuadrado7_1);
+        listaCuadros.insertLast(nombreCuadrado9_1);
+        listaCuadros.insertLast(nombreCuadrado11_1);
+
+        //fila cuadros 2
+        listaCuadros.insertLast(nombreCuadrado1_3);
+        listaCuadros.insertLast(nombreCuadrado3_3);
+        listaCuadros.insertLast(nombreCuadrado5_3);
+        listaCuadros.insertLast(nombreCuadrado7_3);
+        listaCuadros.insertLast(nombreCuadrado9_3);
+        listaCuadros.insertLast(nombreCuadrado11_3);
+
+        //fila cuadros 3
+        listaCuadros.insertLast(nombreCuadrado1_5);
+        listaCuadros.insertLast(nombreCuadrado3_5);
+        listaCuadros.insertLast(nombreCuadrado5_5);
+        listaCuadros.insertLast(nombreCuadrado7_5);
+        listaCuadros.insertLast(nombreCuadrado9_5);
+        listaCuadros.insertLast(nombreCuadrado11_5);
+
+        //fila cuadros 4
+        listaCuadros.insertLast(nombreCuadrado1_7);
+        listaCuadros.insertLast(nombreCuadrado3_7);
+        listaCuadros.insertLast(nombreCuadrado5_7);
+        listaCuadros.insertLast(nombreCuadrado7_7);
+        listaCuadros.insertLast(nombreCuadrado9_7);
+        listaCuadros.insertLast(nombreCuadrado11_7);
+
+        //fila cuadros 5
+        listaCuadros.insertLast(nombreCuadrado1_9);
+        listaCuadros.insertLast(nombreCuadrado3_9);
+        listaCuadros.insertLast(nombreCuadrado5_9);
+        listaCuadros.insertLast(nombreCuadrado7_9);
+        listaCuadros.insertLast(nombreCuadrado9_9);
+        listaCuadros.insertLast(nombreCuadrado11_9);
+
+        //fila cuadros 6
+        listaCuadros.insertLast(nombreCuadrado1_11);
+        listaCuadros.insertLast(nombreCuadrado3_11);
+        listaCuadros.insertLast(nombreCuadrado5_11);
+        listaCuadros.insertLast(nombreCuadrado7_11);
+        listaCuadros.insertLast(nombreCuadrado9_11);
+        listaCuadros.insertLast(nombreCuadrado11_11);
+    }
+
+
     @FXML
     private Button boton0_1;
 
@@ -624,87 +560,24 @@ public class GameController {
     @FXML
     private Label nombreCuadrado9_9;
     @FXML
-    private Button botonIniciar;
+    private Button botonVerListas;
     @FXML
     private Label personaTurno;
 
-    private void configurarFilaNombres1() {
-        filaNombres1.insertLast(nombreCuadrado1_1);
-        filaNombres1.insertLast(nombreCuadrado3_1);
-        filaNombres1.insertLast(nombreCuadrado5_1);
-        filaNombres1.insertLast(nombreCuadrado7_1);
-        filaNombres1.insertLast(nombreCuadrado9_1);
-        filaNombres1.insertLast(nombreCuadrado11_1);
-    }
-    private void configurarFilaNombres3() {
-        filaNombres3.insertLast(nombreCuadrado1_3);
-        filaNombres3.insertLast(nombreCuadrado3_3);
-        filaNombres3.insertLast(nombreCuadrado5_3);
-        filaNombres3.insertLast(nombreCuadrado7_3);
-        filaNombres3.insertLast(nombreCuadrado9_3);
-        filaNombres3.insertLast(nombreCuadrado11_3);
-    }
-    private void configurarFilaNombres5() {
-        filaNombres5.insertLast(nombreCuadrado1_5);
-        filaNombres5.insertLast(nombreCuadrado3_5);
-        filaNombres5.insertLast(nombreCuadrado5_5);
-        filaNombres5.insertLast(nombreCuadrado7_5);
-        filaNombres5.insertLast(nombreCuadrado9_5);
-        filaNombres5.insertLast(nombreCuadrado11_5);
-    }
-    private void configurarFilaNombres7() {
-        filaNombres7.insertLast(nombreCuadrado1_7);
-        filaNombres7.insertLast(nombreCuadrado3_7);
-        filaNombres7.insertLast(nombreCuadrado5_7);
-        filaNombres7.insertLast(nombreCuadrado7_7);
-        filaNombres7.insertLast(nombreCuadrado9_7);
-        filaNombres7.insertLast(nombreCuadrado11_7);
-    }
-    private void configurarFilaNombres9() {
-        filaNombres9.insertLast(nombreCuadrado1_9);
-        filaNombres9.insertLast(nombreCuadrado3_9);
-        filaNombres9.insertLast(nombreCuadrado5_9);
-        filaNombres9.insertLast(nombreCuadrado7_9);
-        filaNombres9.insertLast(nombreCuadrado9_9);
-        filaNombres9.insertLast(nombreCuadrado11_9);
-    }
-    private void configurarFilaNombres11() {
-        filaNombres11.insertLast(nombreCuadrado1_11);
-        filaNombres11.insertLast(nombreCuadrado3_11);
-        filaNombres11.insertLast(nombreCuadrado5_11);
-        filaNombres11.insertLast(nombreCuadrado7_11);
-        filaNombres11.insertLast(nombreCuadrado9_11);
-        filaNombres11.insertLast(nombreCuadrado11_11);
-    }
-    public void añadirMatrizNombres() {
-        matrizNombres.insertLast(filaNombres1);
-        matrizNombres.insertLast(filaNombres3);
-        matrizNombres.insertLast(filaNombres5);
-        matrizNombres.insertLast(filaNombres7);
-        matrizNombres.insertLast(filaNombres9);
-        matrizNombres.insertLast(filaNombres11);
-    }
-    public void iniciarMatrizNombres() {
-        System.out.println(matrizNombres.getLength());
-        añadirMatrizNombres();
-        System.out.println(matrizNombres.getLength());
-        matrizNombres.displayForward();
-        System.out.println(2);
-    }
 
     @FXML
-    protected void cambiarColor(Button boton) {
+    protected void cambiarColor(Button boton, int index, String tipo) {
         boton.setOnAction(event->{
             boton.setStyle("-fx-background-color: #ff0000; ");
-            System.out.println("cambiarColor");
+            System.out.println("cambiarColor " + index +" " + tipo);
         });
     }
 
-   
+
+
     @FXML
-    public void Iniciar(ActionEvent actionEvent) {
-        largoMatriz();
-        iniciarMatrizNombres();
+    public void VerListas(ActionEvent actionEvent) {
+
     }
     public void cambiarNombre(String nombreUsuario) {
         personaTurno.setText(nombreUsuario);

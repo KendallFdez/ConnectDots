@@ -3,6 +3,7 @@ module client.interfaz {
     requires javafx.fxml;
     requires java.xml;
     requires org.json;
+    requires org.apache.commons.lang3;
 
 
     opens client.interfaz to javafx.fxml;
@@ -12,4 +13,6 @@ module client.interfaz {
     exports client.interfaztest;
     exports server.modelo;
     exports utils.Doble;
+    exports server;
+    exports utils.Cola;
 }

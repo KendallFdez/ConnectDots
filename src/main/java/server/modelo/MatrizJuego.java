@@ -2,12 +2,12 @@ package server.modelo;
 import utils.Doble.ListaDoble;
 import utils.Doble.NodoDoble;
 
-public class Juego {
+public class MatrizJuego {
     private ListaDoble<ListaDoble<Integer>> mallaLineasHorizontales;
     private ListaDoble<ListaDoble<Integer>> mallaLineasVerticales;
     private ListaDoble<ListaDoble<Integer>> cuadrados;
 
-    public Juego(){
+    public MatrizJuego(){
         this.mallaLineasHorizontales = ConstruirMatrix(6, 7);
         this.mallaLineasVerticales = ConstruirMatrix(7, 6);
         this.cuadrados = ConstruirMatrix(6, 6);

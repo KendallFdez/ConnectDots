@@ -1,6 +1,6 @@
 package client.interfaztest;
 
-import client.socket.Connection;
+import client.Juego;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -10,7 +10,7 @@ public class HelloController { //onSendButtonClick
 
     @FXML
     protected void onHelloButtonClick() {
-        boolean result = Connection.Start();
+        boolean result = Juego.GetInstance().Conectarse("example");
         if(result)
         {
             welcomeText.setText("Conectado");
@@ -23,7 +23,7 @@ public class HelloController { //onSendButtonClick
     }
     @FXML
     protected void onSendButtonClick() {
-        Connection.GetConnection().Enviar_mensaje("Hola <<mensaje>>");
+        Juego.GetInstance().GetConnection().Enviar_mensaje("Hola <<mensaje>>");
 
     }
 }

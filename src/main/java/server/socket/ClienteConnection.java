@@ -18,6 +18,8 @@ public class ClienteConnection implements Runnable {
      * Representa el texto a enviar
      */
     public String mensaje;
+
+    public boolean conectado;
     /**
      * Representa una linea de salida de datos
      */
@@ -50,6 +52,8 @@ public class ClienteConnection implements Runnable {
         this.socket = socket;
 
         this.mensajes_recibidos= new ConcurrentLinkedQueue<>();
+
+        this.conectado = true;
 
     }
 
@@ -198,6 +202,7 @@ public class ClienteConnection implements Runnable {
             }
 
         } catch (Exception e) {
+            this.conectado = false;
             System.out.println("Salio");
             // TODO Auto-generated catch block
             e.printStackTrace();

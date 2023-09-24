@@ -42,7 +42,7 @@
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="boton1_0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cambiarColor" prefHeight="12.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="1" />
+            <Button fx:id="boton1_0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="1" />
             <Button fx:id="boton3_0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="3" />
             <Button fx:id="boton5_0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="5" />
             <Button fx:id="boton7_0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="7" />
@@ -323,7 +323,7 @@
             <Font size="44.0" />
          </font>
       </Label>
-      <Button fx:id="botonIniciar" layoutX="22.0" layoutY="85.0" mnemonicParsing="false" onAction="#Iniciar" text="Iniciar">
+      <Button fx:id="botonVerListas" layoutX="22.0" layoutY="85.0" mnemonicParsing="false" onAction="#VerListas" text="Ver listas">
          <font>
             <Font size="10.0" />
          </font>
