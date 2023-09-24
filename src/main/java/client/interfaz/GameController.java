@@ -1,14 +1,13 @@
 package client.interfaz;
 
 import javafx.event.ActionEvent;
-import org.w3c.dom.events.MouseEvent;
 
 import utils.Doble.ListaDoble;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class Controller {
+public class GameController {
     ListaDoble<Button> fila0 = new ListaDoble<Button>();
     ListaDoble<Button> fila1 = new ListaDoble<Button>();
     ListaDoble<Button> fila2 = new ListaDoble<Button>();
@@ -626,6 +625,8 @@ public class Controller {
     private Label nombreCuadrado9_9;
     @FXML
     private Button botonIniciar;
+    @FXML
+    private Label personaTurno;
 
     private void configurarFilaNombres1() {
         filaNombres1.insertLast(nombreCuadrado1_1);
@@ -704,9 +705,11 @@ public class Controller {
     public void Iniciar(ActionEvent actionEvent) {
         largoMatriz();
         iniciarMatrizNombres();
-        System.out.println("Hola");
     }
-
+    public void cambiarNombre(String nombreUsuario) {
+        personaTurno.setText(nombreUsuario);
+    }
     public void cambiarColor(ActionEvent actionEvent) {
     }
+
 }

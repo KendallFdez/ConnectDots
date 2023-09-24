@@ -1,6 +1,8 @@
 package utils.Doble;
 
 
+import utils.Cola.Nodo;
+
 /**
  * Clase listaDoble(doblemente enlazada) para implementar la malla del juego
  */
@@ -155,6 +157,18 @@ public class ListaDoble<T> {
             }
         }
         return null;
+    }
+    public int getNodePosition(T data) {
+        NodoDoble<T> current = head;
+        int position = 1;
+        while (current != null) {
+            if (current.getData().equals(data)) {
+                return position;
+            }
+            current = current.next;
+            position++;
+        }
+        return -1; // node not found
     }
 }
 
