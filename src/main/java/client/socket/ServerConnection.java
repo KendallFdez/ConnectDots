@@ -24,6 +24,8 @@ public class ServerConnection implements Runnable {
      * Representa una linea de salida de datos
      */
     private DataOutputStream envioDatos;
+
+    private boolean ejecutandoHilo = true;
     /**
      * Representa una linea de entrada de datos
      */
@@ -55,6 +57,17 @@ public class ServerConnection implements Runnable {
         this.mensajes_recibidos = new ConcurrentLinkedQueue<>();
 
     }
+
+    public void finalizarConexion() {
+        try {
+            this.ejecutandoHilo = false;
+            socket.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     /**
      * Recibe los datos de la linea de entrada de datos
      */
@@ -113,7 +126,6 @@ public class ServerConnection implements Runnable {
 
     public void EnviarJSON(String jsonString) {
         try {
-            this.getEnvioDatos().writeUTF("JSON"); // Indicar que se está enviando JSON
             this.getEnvioDatos().writeUTF(jsonString); // Enviar la cadena JSON
             this.getEnvioDatos().flush();
         } catch (IOException e1) {
@@ -177,9 +189,11 @@ public class ServerConnection implements Runnable {
     public String LeerEntrada() {
         DataInputStream entradaDatos = this.getEntradaDatos();
         try {
-            return entradaDatos.readUTF();
-        } catch (IOException e) {
-            e.printStackTrace();
+            String entrada =  entradaDatos.readUTF();
+            System.out.println("JSON "+ entrada);
+            return entrada;
+        } catch (Exception e) {
+            System.out.println("Lectura desconectada");
         }
         return null;
     }
@@ -190,27 +204,19 @@ public class ServerConnection implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Se inicio el run");
+        System.out.println("Se inicio el juego");
         try {
-            while (true) {
+            while (ejecutandoHilo) {
                 String message = this.LeerEntrada();
 
                 if (this.mensajes_recibidos == null) {
                     this.mensajes_recibidos = new ConcurrentLinkedQueue<>();
                 }
 
-                // Verificar si el mensaje es JSON
-                if (message.startsWith("JSON")) {
-                    String jsonString = message.substring(5); // Quitar el prefijo "JSON"
-                    this.ProcesarJSON(jsonString); // Procesar la cadena JSON
-                } else {
-                    this.mensajes_recibidos.offer(message);
-                }
-
-                System.out.println("Funciona");
+                this.mensajes_recibidos.offer(message);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            if(ejecutandoHilo) System.out.println("Desconectado");
         }
     }
 

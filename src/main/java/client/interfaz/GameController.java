@@ -1,12 +1,19 @@
 package client.interfaz;
 
+import client.Comandos;
+import client.Juego;
 import javafx.event.ActionEvent;
 
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import utils.Doble.ListaDoble;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import utils.Doble.NodoDoble;
+import javafx.scene.control.ButtonBar.ButtonData;
+
+import java.util.Optional;
 
 public class GameController {
 
@@ -564,13 +571,31 @@ public class GameController {
     @FXML
     private Label personaTurno;
 
-
     @FXML
+    private Label nombreJugador;
+
+
     protected void cambiarColor(Button boton, int index, String tipo) {
         boton.setOnAction(event->{
-            boton.setStyle("-fx-background-color: #ff0000; ");
-            System.out.println("cambiarColor " + index +" " + tipo);
+            if(Juego.GetInstance().esMiTurno())
+            {
+                Juego.GetInstance().GetConnection().Enviar_mensaje(Comandos.GetComandoPonerLinea(index, tipo));
+            }
         });
+    }
+    public Dialog<String> CreateDialog(String name)
+    {
+        //Creating a dialog
+        Dialog<String> dialog = new Dialog<String>();
+        //Setting the title
+        dialog.setTitle("Dialog");
+        ButtonType type = new ButtonType("Finalizar", ButtonData.FINISH);
+        //Setting the content of the dialog
+        dialog.setContentText("Ganador: %s\nClick en el botón Finalizar para continuar a la pantalla inicial.".formatted(name));
+        //Adding buttons to the dialog pane
+        dialog.getDialogPane().getButtonTypes().add(type);
+        //Setting the label
+        return dialog;
     }
 
 
@@ -582,7 +607,32 @@ public class GameController {
     public void cambiarNombre(String nombreUsuario) {
         personaTurno.setText(nombreUsuario);
     }
-    public void cambiarColor(ActionEvent actionEvent) {
+
+    public void cambiarUsuarioActual(String nombreUsuario) {
+        nombreJugador.setText(nombreUsuario);
+    }
+
+    public void ponerNombreCuadro(int numeroCuadro, String nombreUsuario) {
+        NodoDoble<Label> nodo = this.listaCuadros.obtenerNodoPorIndice(numeroCuadro);
+        nodo.getData().setText(nombreUsuario);
+    }
+
+    public void ponerLinea(int numeroLinea, String tipo) {
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = this.lineasHorizontales.obtenerNodoPorIndice(numeroLinea);
+        }
+        else
+        {
+            nodo = this.lineasVerticales.obtenerNodoPorIndice(numeroLinea);
+        }
+
+        nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+        nodo.getData().setDisable(true);
+    }
+    public void verListas(ActionEvent actionEvent) {
+
     }
 
 }

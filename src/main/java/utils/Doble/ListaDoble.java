@@ -19,7 +19,7 @@ public class ListaDoble<T> {
     /**
      * Representa el ultimo elemento de la lista
      */
-    private NodoDoble tail;
+    private NodoDoble<T> tail;
     /**
      * Representa el largo de la lista
      */
@@ -80,6 +80,10 @@ public class ListaDoble<T> {
         newNode.setNext(head);
         head=newNode;
         length++;
+    }
+
+    public NodoDoble<T> getTail() {
+        return this.tail;
     }
 
     /**

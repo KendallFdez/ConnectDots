@@ -126,182 +126,182 @@
             <Button fx:id="boton12_7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="90.0" prefWidth="12.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="12" GridPane.rowIndex="7" />
             <Button fx:id="boton12_9" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="90.0" prefWidth="12.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="12" GridPane.rowIndex="9" />
             <Button fx:id="boton12_11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="90.0" prefWidth="12.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="12" GridPane.rowIndex="11" />
-            <Label fx:id="nombreCuadrado1_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="nombreCuadrado1_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado3_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Label fx:id="nombreCuadrado3_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado5_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <Label fx:id="nombreCuadrado5_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado7_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1">
+            <Label fx:id="nombreCuadrado7_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado9_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1">
+            <Label fx:id="nombreCuadrado9_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado11_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="1">
+            <Label fx:id="nombreCuadrado11_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="1">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado1_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="nombreCuadrado1_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado3_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Label fx:id="nombreCuadrado3_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado5_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <Label fx:id="nombreCuadrado5_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado7_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="3">
+            <Label fx:id="nombreCuadrado7_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado9_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="3">
+            <Label fx:id="nombreCuadrado9_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="3">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado11_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="3">
+            <Label fx:id="nombreCuadrado11_3" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="3">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado1_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="nombreCuadrado1_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado3_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <Label fx:id="nombreCuadrado3_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado5_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="5">
+            <Label fx:id="nombreCuadrado5_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado7_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="5">
+            <Label fx:id="nombreCuadrado7_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="5">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado9_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="5">
+            <Label fx:id="nombreCuadrado9_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="5">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado11_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="5">
+            <Label fx:id="nombreCuadrado11_5" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="5">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado1_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="nombreCuadrado1_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado3_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <Label fx:id="nombreCuadrado3_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado5_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="7">
+            <Label fx:id="nombreCuadrado5_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="7">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado7_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="7">
+            <Label fx:id="nombreCuadrado7_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="7">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado9_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="7">
+            <Label fx:id="nombreCuadrado9_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="7">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado11_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="7">
+            <Label fx:id="nombreCuadrado11_7" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="7">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado1_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Label fx:id="nombreCuadrado1_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado3_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="9">
+            <Label fx:id="nombreCuadrado3_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado5_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="9">
+            <Label fx:id="nombreCuadrado5_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="9">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado7_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="9">
+            <Label fx:id="nombreCuadrado7_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="9">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado9_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="9">
+            <Label fx:id="nombreCuadrado9_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="9">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado11_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="9">
+            <Label fx:id="nombreCuadrado11_9" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="9">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado1_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <Label fx:id="nombreCuadrado1_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado3_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="11">
+            <Label fx:id="nombreCuadrado3_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="11">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado5_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="11">
+            <Label fx:id="nombreCuadrado5_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="11">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado7_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="11">
+            <Label fx:id="nombreCuadrado7_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="11">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado9_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="11">
+            <Label fx:id="nombreCuadrado9_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="11">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="nombreCuadrado11_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="Kendall" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="11">
+            <Label fx:id="nombreCuadrado11_11" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="90.0" text="" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="11" GridPane.rowIndex="11">
                <font>
                   <Font size="23.0" />
                </font>
@@ -318,12 +318,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="180.0" layoutY="17.0" text="Connect Dots" textFill="WHITE">
+      <Label fx:id="nombreJugador" layoutX="180.0" layoutY="17.0" text="Connect Dots" textFill="WHITE">
          <font>
             <Font size="44.0" />
          </font>
       </Label>
-      <Button fx:id="botonVerListas" layoutX="22.0" layoutY="85.0" mnemonicParsing="false" onAction="#VerListas" text="Ver listas">
+      <Button fx:id="botonVerListas" layoutX="22.0" layoutY="85.0" mnemonicParsing="false" onAction="#verListas" text="Ver listas">
          <font>
             <Font size="10.0" />
          </font>

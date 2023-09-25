@@ -1,5 +1,7 @@
 package server.socket;
 
+import org.json.JSONObject;
+import server.Comandos;
 import server.modelo.Cliente;
 import utils.Cola.Cola;
 
@@ -22,6 +24,7 @@ public class Recepcion implements Runnable {
      * Crea una instancia de servidor usando una recepcion
      */
     public Recepcion(){
+        this.clienteCola = new Cola<>();
     }
 
     /**
@@ -43,7 +46,11 @@ public class Recepcion implements Runnable {
                 int usuarioId = this.cantidadUsuariosConectados;
                 this.cantidadUsuariosConectados ++;
                 String mensajeMetadata = conexcion.LeerEntrada();
-                Cliente cliente = new Cliente(conexcion, mensajeMetadata, usuarioId);
+                JSONObject jsonObject = new JSONObject(mensajeMetadata);
+                System.out.println(mensajeMetadata);
+                Cliente cliente = new Cliente(conexcion, jsonObject.getString("nombre"), usuarioId);
+                conexcion.Enviar_mensaje(Comandos.GetComandoConexion(usuarioId));
+                System.out.println(Comandos.GetComandoConexion(usuarioId));
                 clienteCola.enqueue(cliente);
             }
 

@@ -1,38 +1,55 @@
 package server;
 
+import org.json.JSONObject;
 import server.modelo.Cliente;
+import server.modelo.MatrizJuego;
 import server.socket.ClienteConnection;
 import utils.Cola.Cola;
+import utils.Doble.ListaDoble;
+import utils.Doble.NodoDoble;
 
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.TimeUnit;
 
 public class Juego  implements Runnable{
 
     ConcurrentHashMap<Integer, Cliente> conexiones;
 
+    ListaDoble<Cliente> listaCliente;
+
+    MatrizJuego matrizJuego;
+
+    NodoDoble<Cliente> clienteTurnoActual;
+
     public JuegoEstado estado;
+
+    private boolean ejecutandoJuego = true;
 
     public Juego(){
         this.conexiones = new ConcurrentHashMap<>();
+        this.listaCliente = new ListaDoble<>();
         this.estado = JuegoEstado.enEspera;
-    }
-
-    public void reiniciar()
-    {
-        this.conexiones.clear();
-        this.estado = JuegoEstado.enEspera;
+        this.matrizJuego = new MatrizJuego();
     }
 
     public void iniciar()
     {
         this.estado = JuegoEstado.iniciado;
+        this.listaCliente.getTail().setNext(this.listaCliente.getHead());
+        this.clienteTurnoActual = this.listaCliente.getHead();
+        this.enviarMensajeATodos(Comandos.GetComandoServerIniciado(clienteTurnoActual.getData().getId(), clienteTurnoActual.getData().getNombre()));
     }
 
     public boolean estaIniciado()
     {
         return this.estado == JuegoEstado.iniciado;
+    }
+
+    public boolean estaFinalizado()
+    {
+        return this.estado == JuegoEstado.finalizado;
     }
 
     public boolean agregarCliente(Cliente cliente)
@@ -41,6 +58,7 @@ public class Juego  implements Runnable{
         {
             cliente.iniciarEscucha();
             conexiones.put(cliente.getId(), cliente);
+            this.listaCliente.insertLast(cliente);
             return true;
         }
 
@@ -48,12 +66,12 @@ public class Juego  implements Runnable{
     }
 
 
-    public void EnviarMensajeATodos(String jsonString) {
+    public void enviarMensajeATodos(String jsonString) {
         Enumeration<Integer> llaves = this.conexiones.keys();
         while (llaves.hasMoreElements()) {
             int llave = llaves.nextElement();
             if (this.conexiones.containsKey(llave)) {
-                this.conexiones.get(llave).getConnection().EnviarJSON(jsonString);
+                this.conexiones.get(llave).getConnection().Enviar_mensaje(jsonString);
             }
         }
     }
@@ -66,7 +84,12 @@ public class Juego  implements Runnable{
      */
     @Override
     public void run() {
-        while (true) {
+        while (ejecutandoJuego) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             if(this.estado != JuegoEstado.iniciado)
             {
                 continue;
@@ -78,18 +101,72 @@ public class Juego  implements Runnable{
                 Cliente cliente = this.conexiones.get(llave);
                 if (cliente.getConnection().Revisar_bandeja()) {
                     String mensaje = cliente.getConnection().Obtener_mensaje();
+                    JSONObject jsonObject = new JSONObject(mensaje);
                     System.out.println(mensaje);
-
-                    // Verificar si el mensaje es un JSON
-                    if (mensaje.startsWith("JSON")) {
-                        String jsonString = cliente.getConnection().RecibirJSON();
-                        if (jsonString != null) {
-                            // Procesar el JSON recibido
-                            System.out.println("JSON recibido: " + jsonString);
-                        }
-                    }
+                    this.revisarComandos(jsonObject, cliente);
                 }
             }
+        }
+        System.out.println("juego finalizado");
+    }
+    private void revisarComandos(JSONObject jsonObject, Cliente cliente)
+    {
+        System.out.println(jsonObject.toString());
+        switch (jsonObject.getString("comando")) {
+            case "ponerLinea":
+                this.ponerLinea(jsonObject, cliente);
+                break;
+            default:
+                System.err.println("Comando no encontrado");
+
+        }
+    }
+
+    private void ponerLinea(JSONObject jsonObject, Cliente cliente)
+    {
+        if(jsonObject.getString("tipo").equals("horizontal"))
+        {
+            this.matrizJuego.PonerLineaHorizontal(cliente.getId(), jsonObject.getInt("numeroLinea"));
+        }
+        else
+        {
+            this.matrizJuego.PonerLineaVertical(cliente.getId(), jsonObject.getInt("numeroLinea"));
+        }
+
+        ListaDoble<Integer> cuadros = this.matrizJuego.ValidarCuadros(cliente.getId());
+        int jugadorGanador = this.matrizJuego.ObtenerUsuarioGanador();
+        if(cuadros.getLength() == 0)
+        {
+            this.clienteTurnoActual = this.clienteTurnoActual.getNext();
+        }
+
+        Cliente jugadorNombre = this.clienteTurnoActual.getData();
+        if(jugadorGanador > -1)
+        {
+            jugadorNombre = this.conexiones.get(jugadorGanador);
+        }
+        int usuarioId = jugadorGanador != -2? jugadorNombre.getId() : jugadorGanador;
+        String nombre = jugadorGanador != -2? jugadorNombre.getNombre() : "Empate";
+        String estado = jugadorGanador == -1? "cambioTurno" : "finalizado";
+        String comando = Comandos.GetComandoActualizarCuadros(jsonObject.getInt("numeroLinea"),
+                jsonObject.getString("tipo"),
+                cliente,
+                cuadros,
+                usuarioId,
+                nombre,
+                estado
+        );
+        this.enviarMensajeATodos(comando);
+        if(estado.equals("finalizado"))
+        {
+            try {
+                TimeUnit.MILLISECONDS.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            this.ejecutandoJuego = false;
+            this.estado = JuegoEstado.finalizado;
+
         }
     }
 }

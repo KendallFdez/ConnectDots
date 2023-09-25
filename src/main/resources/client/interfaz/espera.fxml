@@ -34,7 +34,7 @@
             <Font size="9.0" />
          </font>
       </Button>
-      <Button fx:id="botonAbrir" layoutX="266.0" layoutY="254.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="19.0" prefWidth="70.0" text="Abrir Juego">
+      <Button fx:id="botonAbrir" layoutX="266.0" layoutY="254.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="19.0" prefWidth="70.0" text="Conectarse">
          <font>
             <Font size="9.0" />
          </font>

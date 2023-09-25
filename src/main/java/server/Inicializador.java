@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 public class Inicializador{
 
@@ -32,25 +33,36 @@ public class Inicializador{
     }
 
     public void ejecutar() {
+        System.out.println("Ejecutando");
         long start = 0;
         long end ;
         boolean inicializando = false;
-        long segundosEspera = 1;
+        long segundosEspera = 5;
+        int cantidadJugadores = 2;
 
         try {
             while(true){
+                TimeUnit.MILLISECONDS.sleep(500);
                 if(juego.estaIniciado()){
                     continue;
                 }
-
-                if(this.recepcion.clienteCola.getSize() >= 2 && !inicializando)
+                else if(juego.estaFinalizado())
                 {
+                    juego = new Juego();
+                    new Thread(juego).start();
+                }
+
+                if(this.recepcion.clienteCola.getSize() >= cantidadJugadores && !inicializando)
+                {
+                    System.out.println("Juego iniciando en: "+ segundosEspera);
                     start = System.currentTimeMillis();
                     inicializando = true;
                 }
                 if(inicializando)
                 {
+
                     end = System.currentTimeMillis();
+                    System.out.println("Juego iniciando en: "+ (segundosEspera - (end - start)/1000));
                     if(end - start > segundosEspera * 1000)
                     {
                         this.Inicializar();

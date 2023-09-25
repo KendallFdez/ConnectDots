@@ -155,7 +155,7 @@ public class ClienteConnection implements Runnable {
         try {
             return entradaDatos.readUTF();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Entrada exception");
         }
         return null;
     }
@@ -187,7 +187,7 @@ public class ClienteConnection implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Se inicio el run");
+        System.out.println("Se inicio el juego");
 
         try {
             while(true){
@@ -204,8 +204,6 @@ public class ClienteConnection implements Runnable {
         } catch (Exception e) {
             this.conectado = false;
             System.out.println("Salio");
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
 
     }

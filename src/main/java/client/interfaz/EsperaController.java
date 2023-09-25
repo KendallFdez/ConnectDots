@@ -27,6 +27,8 @@ public class EsperaController {
     @FXML
     private Label posicionCola;
 
+    public Stage gameControllerStage;
+
 
     @FXML
     public void actualizarPosicion(ActionEvent event){
@@ -37,7 +39,7 @@ public class EsperaController {
         return jugadores;
     }
 
-    public void CambiarPantalla()
+    public void CambiarPantalla(String nombre, GameController gameController)
     {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game1.fxml"));
@@ -46,13 +48,16 @@ public class EsperaController {
             stage.setTitle("Connect Dots");
             stage.setScene(scene);
             stage.show();
+            this.gameControllerStage = stage;
 
-            GameController gameController = fxmlLoader.getController();
+            gameController = fxmlLoader.getController();
             Juego.GetInstance().setGameController(gameController);
-            gameController.cambiarNombre(Juego.GetInstance().getUsuario().getNombre());
+            gameController.cambiarNombre(nombre);
+            gameController.cambiarUsuarioActual(Juego.GetInstance().getUsuario().getNombre());
             gameController.configurarPantalla();
         }catch (Exception e){
             System.out.println("No se puede inicar la ventana del juego");
+            System.out.println(e.toString());
         }
 
     }
@@ -72,5 +77,15 @@ public class EsperaController {
         botonAbrir.setLayoutX(230);
         botonAbrir.setDisable(true);
         Juego.GetInstance().setEsperaController(this);
+    }
+
+    public void resetWindow()
+    {
+        this.gameControllerStage.close();
+        campoNombre.setDisable(false);
+        botonAbrir.setText("Conectarse");
+        botonAbrir.setPrefWidth(70);
+        botonAbrir.setLayoutX(266);
+        botonAbrir.setDisable(false);
     }
 }
