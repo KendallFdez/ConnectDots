@@ -9,42 +9,35 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.json.*;
 
 /**
- * Clase encargada de crear conexiones entre clientes y el servidor
+ * Clase encargada de manejar la conexión entre clientes y el servidor.
+ * Implementa Runnable para permitir la ejecución concurrente.
  */
 public class ServerConnection implements Runnable {
-    /**
-     * Representa la informacion de la ventana(nombre de usuario e ip)
-     */
+    // Representa el nombre de usuario y la dirección IP del cliente
     String nick, ip;
-    /**
-     * Representa el texto a enviar
-     */
+
     public String mensaje;
-    /**
-     * Representa una linea de salida de datos
-     */
+    // Flujo de salida para enviar datos al servidor
     private DataOutputStream envioDatos;
 
     private boolean ejecutandoHilo = true;
-    /**
-     * Representa una linea de entrada de datos
-     */
+
+    // Flujo de entrada para recibir datos del servidor
     private DataInputStream entradaDatos;
-    /**
-     * Representa el socket del cliente
-     */
+
+    // Socket para la conexión con el servidor
     Socket socket;
-    /**
-     * Representa los mensajes recibidos
-     */
+
+    // Cola concurrente para almacenar los mensajes recibidos del servidor
     public ConcurrentLinkedQueue<String> mensajes_recibidos;
 
     /**
-     * Crea un paquete con la informacion de cada mensaje
+     * Constructor de la clase ServerConnection.
+     * Inicializa el nombre de usuario, la dirección IP, el socket y la cola de mensajes recibidos.
      *
-     * @param nick   Quien lo envia
-     * @param ip     Ip de quien lo envia
-     * @param socket socket al que pertenece
+     * @param nick   Nombre de usuario del cliente
+     * @param ip     Dirección IP del cliente
+     * @param socket Socket para la conexión con el servidor
      */
     public ServerConnection(String nick, String ip, Socket socket) {
 
@@ -57,7 +50,9 @@ public class ServerConnection implements Runnable {
         this.mensajes_recibidos = new ConcurrentLinkedQueue<>();
 
     }
-
+    /**
+     * Finaliza la conexión y cierra el socket.
+     */
     public void finalizarConexion() {
         try {
             this.ejecutandoHilo = false;
@@ -69,7 +64,10 @@ public class ServerConnection implements Runnable {
     }
 
     /**
-     * Recibe los datos de la linea de entrada de datos
+     * Obtiene el flujo de entrada de datos del socket.
+     * Si el flujo de entrada no está inicializado, lo inicializa.
+     *
+     * @return El flujo de entrada de datos del socket.
      */
     public DataInputStream getEntradaDatos() {
         if (this.entradaDatos == null) {
@@ -84,7 +82,10 @@ public class ServerConnection implements Runnable {
     }
 
     /**
-     * Envia los datos de la linea de salida de datos
+     * Obtiene el flujo de salida de datos del socket.
+     * Si el flujo de salida no está inicializado, lo inicializa.
+     *
+     * @return El flujo de salida de datos del socket.
      */
     public DataOutputStream getEnvioDatos() {
         if (this.envioDatos == null) {
@@ -99,18 +100,19 @@ public class ServerConnection implements Runnable {
     }
 
     /**
-     * Conecta al cliente con el socket dado
+     * Inicializa la conexión al servidor utilizando un socket dado.
      *
-     * @param misocket Usado para concetar al cliente
+     * @param misocket Socket para la conexión con el servidor
      */
     public ServerConnection(Socket misocket) {
         this.socket = misocket;
     }
 
     /**
-     * Crea una linea de envio y escribe un mensaje con los datos
+     * Envia un mensaje al servidor.
+     * El mensaje se escribe en el flujo de salida de datos y luego se vacía el flujo.
      *
-     * @param mensaje La clase para la informacion de los mensajes
+     * @param mensaje El mensaje a enviar al servidor
      */
     public void Enviar_mensaje(String mensaje) {
         try {
@@ -123,35 +125,10 @@ public class ServerConnection implements Runnable {
         }
 
     }
-
-    public void EnviarJSON(String jsonString) {
-        try {
-            this.getEnvioDatos().writeUTF(jsonString); // Enviar la cadena JSON
-            this.getEnvioDatos().flush();
-        } catch (IOException e1) {
-            System.out.println(e1.getMessage());
-        }
-    }
-
-    public void ProcesarJSON(String jsonString) {
-        try {
-            JSONObject receivedJson = new JSONObject(jsonString);
-
-            String valor1 = receivedJson.getString("clave1");
-            String valor2 = receivedJson.getString("clave2");
-
-            // Realiza acciones con los valores recibidos
-            System.out.println("Valor1: " + valor1);
-            System.out.println("Valor2: " + valor2);
-        } catch (JSONException e) {
-            // Si la cadena JSON no es válida, maneja la excepción
-            e.printStackTrace();
-        }
-    }
     /**
-     * Devuelve el primer elemento de la lista de mensajes
+     * Obtiene el primer mensaje de la cola de mensajes recibidos.
      *
-     * @return El primer elemento de la lista de mensajes
+     * @return El primer mensaje de la cola de mensajes recibidos.
      */
     public String Obtener_mensaje() {
 
@@ -159,9 +136,9 @@ public class ServerConnection implements Runnable {
     }
 
     /**
-     * Función para revisar el cliente recibe mensajes
+     * Verifica si hay mensajes en la cola de mensajes recibidos.
      *
-     * @return Un booleano que dice si la lista de mensajes recibidos tiene algun elemento
+     * @return Verdadero si hay mensajes en la cola, falso en caso contrario.
      */
     public Boolean Revisar_bandeja() {
         return this.mensajes_recibidos != null && !this.mensajes_recibidos.isEmpty();
@@ -170,6 +147,8 @@ public class ServerConnection implements Runnable {
     }
 
     /**
+     * Asigna un nuevo nombre de usuario.
+     *
      * @param nick El nuevo nombre de usuario
      */
     public void setNick(String nick) {
@@ -177,14 +156,18 @@ public class ServerConnection implements Runnable {
     }
 
     /**
-     * @return Devuelve el nombre de usuario
+     * Obtiene el nombre de usuario actual.
+     *
+     * @return El nombre de usuario actual
      */
     public String getNick() {
         return nick;
     }
 
     /**
-     * @return Devuelve los datos leidos de la linea de entrada de datos
+     * Lee datos del flujo de entrada del socket.
+     *
+     * @return Los datos leídos del flujo de entrada del socket.
      */
     public String LeerEntrada() {
         DataInputStream entradaDatos = this.getEntradaDatos();
@@ -198,9 +181,10 @@ public class ServerConnection implements Runnable {
         return null;
     }
 
-        /**
-         * Se encarga de recibir constantemente mensajes y los añade a la lista de mensajes
-         */
+    /**
+     * Ejecuta el hilo que recibe constantemente mensajes del servidor y los añade a la cola de mensajes recibidos.
+     * Se ejecuta mientras la variable ejecutandoHilo sea verdadera.
+     */
 
     @Override
     public void run() {

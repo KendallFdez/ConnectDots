@@ -6,6 +6,10 @@ import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
 
+/**
+ * Clase que representa la matriz de juego para un juego de cuadros y líneas.
+ * Contiene la lógica para colocar líneas, validar cuadros y determinar al ganador.
+ */
 public class MatrizJuego {
     private ListaDoble<ListaDoble<Integer>> mallaLineasHorizontales;
     private ListaDoble<ListaDoble<Integer>> mallaLineasVerticales;
@@ -15,7 +19,9 @@ public class MatrizJuego {
 
     private HashMap<Integer, Integer> cantidadCuadrosPorUsuario;
 
-
+    /**
+     * Constructor de la clase MatrizJuego que inicializa las matrices y el seguimiento de los cuadros por usuario.
+     */
     public MatrizJuego(){
         this.mallaLineasHorizontales = ConstruirMatrix(6, 7);
         this.mallaLineasVerticales = ConstruirMatrix(7, 6);
@@ -23,7 +29,13 @@ public class MatrizJuego {
         this.cantidadCuadrosPorUsuario = new HashMap<>();
 
     }
-
+    /**
+     * Construye una matriz con la cantidad de columnas y filas especificadas, inicializando cada celda con -1.
+     *
+     * @param cantidadColumnas La cantidad de columnas en la matriz.
+     * @param cantidadFilas    La cantidad de filas en la matriz.
+     * @return La matriz construida.
+     */
     public ListaDoble<ListaDoble<Integer>> ConstruirMatrix(int cantidadColumnas, int cantidadFilas){
         ListaDoble<ListaDoble<Integer>> matrix = new ListaDoble<>();
 
@@ -37,7 +49,13 @@ public class MatrizJuego {
 
         return matrix;
     }
-
+    /**
+     * Coloca una línea vertical en la matriz de líneas verticales
+     *
+     * @param elemento El elemento a colocar en la matriz.
+     * @param numeroLineaHorizontal El número de línea horizontal donde colocar el elemento.
+     * @return true si se pudo colocar la línea, false en caso contrario.
+     */
     public boolean PonerLineaVertical(int elemento, int numeroLineaHorizontal){
         int filaIndex = numeroLineaHorizontal / 7;
         int columnaIndex = numeroLineaHorizontal % 7;
@@ -52,6 +70,14 @@ public class MatrizJuego {
 
         return false;
     }
+
+    /**
+     * Coloca una línea horizontal en la matriz de líneas horizontales
+     *
+     * @param elemento El elemento a colocar en la matriz.
+     * @param numeroLineaHorizontal El número de línea horizontal donde colocar el elemento.
+     * @return true si se pudo colocar la línea, false en caso contrario.
+     */
     public boolean PonerLineaHorizontal(int elemento, int numeroLineaHorizontal){
         int filaIndex = numeroLineaHorizontal / 6;
         int columnaIndex = numeroLineaHorizontal % 6;
@@ -66,6 +92,12 @@ public class MatrizJuego {
         return false;
     }
 
+    /**
+     * Determina el usuario ganador del juego.
+     *
+     * @return El ID del usuario ganador. Retorna -1 si el juego aún no ha terminado,
+     * -2 si hay un empate.
+     */
     public int ObtenerUsuarioGanador(){
         int userId = -1;
         int cantidadCuadros = 0;
@@ -99,6 +131,9 @@ public class MatrizJuego {
      * Valida los cuadros vacios, donde el elemento es 0 y las lineas alrededor están marcadas,
      * retorna los índices de los cuatros ganados
      * 6xfila + columna
+     *
+     * @param elemento El elemento a validar en los cuadros.
+     * @return La lista de cuadros rellenados.
      */
     public ListaDoble<Integer> ValidarCuadros(int elemento){
         int numeroCuadro = 0;
@@ -142,7 +177,6 @@ public class MatrizJuego {
     }
 }
 
-//Se necesita, poder recorrer, obtener, insertar
 
 
 

@@ -16,6 +16,9 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que representa la lógica del juego y la comunicación con el servidor.
+ */
 public class Juego implements Runnable{
 
     private static Juego instance;
@@ -40,12 +43,19 @@ public class Juego implements Runnable{
         this.idTurnoActual = -1;
     }
 
+    /**
+     * Comprueba si el juego está iniciado.
+     */
     public boolean estaJuegoIniciado()
     {
         return this.juegoIniciado;
     }
 
-
+    /**
+     * Obtiene la instancia de la clase Juego.
+     *
+     * @return La instancia de la clase Juego.
+     */
     public static Juego GetInstance()
     {
 
@@ -56,30 +66,60 @@ public class Juego implements Runnable{
 
         return instance;
     }
-
+    /**
+     * Restablece la instancia de la clase Juego.
+     */
     public static void ResetInstance()
     {
         instance = new Juego();
     }
-
+    /**
+     * Comprueba si es el turno del usuario actual.
+     *
+     * @return boolean si es el turno del usuario.
+     */
     public boolean esMiTurno()
     {
         return this.usuario.getId() == this.idTurnoActual;
     }
 
+    /**
+     * Establece el controlador del juego.
+     *
+     * @param gameController El controlador del juego.
+     * @return boolean si se estableció el controlador con éxito
+     */
     public void setGameController(GameController gameController)
     {
         this.gameController = gameController;
     }
 
+    /**
+     * Establece el controlador de espera.
+     *
+     * @param esperaController El controlador de espera.
+     * @return boolean si se estableció el controlador con éxito
+     */
     public void setEsperaController(EsperaController esperaController) {
         this.esperaController = esperaController;
     }
 
+    /**
+     * Obtiene la conexión al servidor.
+     *
+     * @return La conexión al servidor.
+     */
     public ServerConnection GetConnection()
     {
         return server;
     }
+
+    /**
+     * Realiza la conexión al servidor.
+     *
+     * @param name El nombre del usuario.
+     * @return boolean si la conexión fue exitosa.
+     */
     public boolean Conectarse(String name)
     {
         Socket misocket = null;
@@ -106,6 +146,11 @@ public class Juego implements Runnable{
         }
     }
 
+    /**
+     * Obtiene el usuario actual.
+     *
+     * @return El usuario actual.
+     */
     public Usuario getUsuario() {
         return usuario;
     }
@@ -132,6 +177,11 @@ public class Juego implements Runnable{
         }
     }
 
+    /**
+     * Analiza los comandos recibidos del servidor antes del inicio del juego y toma acciones en consecuencia.
+     *
+     * @param jsonObject El objeto JSON que contiene el comando recibido del servidor.
+     */
     private void revisarComandosPrevioJuego(JSONObject jsonObject)
     {
         switch (jsonObject.getString("comando")) {
@@ -148,6 +198,11 @@ public class Juego implements Runnable{
 
     }
 
+    /**
+     * Finaliza el juego y muestra un diálogo de ganador.
+     *
+     * @param ganador El nombre del jugador ganador.
+     */
     private void finalizarJuego(String ganador)
     {
         Platform.runLater(() -> {
@@ -162,6 +217,11 @@ public class Juego implements Runnable{
 
     }
 
+    /**
+     * Maneja el comando "serverIniciado" del servidor.
+     *
+     * @param jsonObject El objeto JSON que contiene los datos del servidor.
+     */
     private void serverIniciado(JSONObject jsonObject)
     {
         //"{\"comando\":\"serverIniciado\",\"idTurnoActual\":\"%d\",\"nombreUsuario\":\"%s\"}"
@@ -174,6 +234,11 @@ public class Juego implements Runnable{
         this.juegoIniciado = true;
     }
 
+    /**
+     * Actualiza la información del juego en función de los comandos recibidos del servidor.
+     *
+     * @param jsonObject El objeto JSON que contiene la información del juego.
+     */
     private void actualizarInformacion(JSONObject jsonObject)
     {
 
