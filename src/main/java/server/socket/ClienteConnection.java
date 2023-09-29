@@ -7,41 +7,37 @@ import java.net.Socket;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
- * Clase encargada de crear conexiones entre clientes y el servidor
+ * Clase encargada de gestionar las conexiones entre un cliente y el servidor.
  */
 public class ClienteConnection implements Runnable {
-    /**
-     * Representa la informacion de la ventana(nombre de usuario e ip)
-     */
+
+    // Información del usuario conectado (nombre de usuario e IP)
     String nick, ip;
-    /**
-     * Representa el texto a enviar
-     */
+
+    //Mensaje a enviar.
     public String mensaje;
 
     public boolean conectado;
-    /**
-     * Representa una linea de salida de datos
-     */
+
+    //Flujo de salida de datos para enviar información al servidor.
     private DataOutputStream envioDatos;
-    /**
-     * Representa una linea de entrada de datos
-     */
+
+    //Flujo de entrada de datos para recibir información del servidor.
     private DataInputStream entradaDatos;
-    /**
-     * Representa el socket del cliente
-     */
+
+    // Socket para la comunicación con el servidor.
     Socket socket;
-    /**
-     * Representa los mensajes recibidos
-     */
+
+    //Cola para almacenar los mensajes recibidos del servidor.
     public ConcurrentLinkedQueue<String> mensajes_recibidos;
 
     /**
-     * Crea un paquete con la informacion de cada mensaje
-     * @param nick Quien lo envia
-     * @param ip Ip de quien lo envia
-     * @param socket socket al que pertenece
+     * Constructor de la clase ClienteConnection.
+     * Inicializa la conexión con el servidor y guarda la información del usuario.
+     *
+     * @param nick Nombre de usuario.
+     * @param ip Dirección IP del usuario.
+     * @param socket Socket para la comunicación con el servidor.
      */
     public ClienteConnection(String nick, String ip, Socket socket){
 
@@ -58,7 +54,10 @@ public class ClienteConnection implements Runnable {
     }
 
     /**
-     * Recibe los datos de la linea de entrada de datos
+     * Obtiene el flujo de entrada de datos del socket.
+     * Si el flujo no se ha inicializado, lo crea.
+     *
+     * @return Flujo de entrada de datos del socket.
      */
     public DataInputStream getEntradaDatos() {
         if (this.entradaDatos == null) {
@@ -73,7 +72,10 @@ public class ClienteConnection implements Runnable {
     }
 
     /**
-     * Envia los datos de la linea de salida de datos
+     * Obtiene el flujo de salida de datos del socket.
+     * Si el flujo no se ha inicializado, lo crea.
+     *
+     * @return Flujo de salida de datos del socket.
      */
     public DataOutputStream getEnvioDatos() {
         if (this.envioDatos == null) {
@@ -88,21 +90,18 @@ public class ClienteConnection implements Runnable {
     }
 
     /**
-     * Conecta al cliente con el socket dado
-     * @param misocket Usado para concetar al cliente
+     * Inicializa la conexión con el servidor utilizando un socket dado.
+     *
+     * @param misocket Socket para la comunicación con el servidor.
      */
     public ClienteConnection(Socket misocket) {
         this.socket= misocket;
     }
 
     /**
-     * Crea una linea de envio y escribe un mensaje con los datos
-     * @param mensaje La clase para la informacion de los mensajes
-     */
-    /**
-     * Crea una linea de envio y escribe un mensaje con los datos
+     * Envía un mensaje al servidor a través del flujo de salida de datos.
      *
-     * @param mensaje La clase para la informacion de los mensajes
+     * @param mensaje Mensaje a enviar.
      */
     public void Enviar_mensaje(String mensaje) {
         try {
@@ -116,20 +115,20 @@ public class ClienteConnection implements Runnable {
 
     }
 
-
     /**
-     * Devuelve el primer elemento de la lista de mensajes
-     * @return El primer elemento de la lista de mensajes
+     * Obtiene y elimina el primer mensaje de la cola de mensajes recibidos.
+     *
+     * @return El primer mensaje de la cola de mensajes recibidos.
      */
     public String Obtener_mensaje(){
 
         return this.mensajes_recibidos.poll();
     }
 
-
     /**
-     * Función para revisar el cliente recibe mensajes
-     * @return Un booleano que dice si la lista de mensajes recibidos tiene algun elemento
+     * Verifica si hay mensajes en la cola de mensajes recibidos.
+     *
+     * @return Verdadero si hay mensajes en la cola, falso en caso contrario.
      */
     public Boolean Revisar_bandeja(){
         return this.mensajes_recibidos != null && !this.mensajes_recibidos.isEmpty();
@@ -138,13 +137,17 @@ public class ClienteConnection implements Runnable {
     }
 
     /**
-     * @param nick El nuevo nombre de usuario
+     * Establece el nombre de usuario.
+     *
+     * @param nick El nuevo nombre de usuario.
      */
     public void setNick(String nick){
         this.nick= nick;
     }
     /**
-     * @return Devuelve el nombre de usuario
+     * Obtiene el nombre de usuario.
+     *
+     * @return El nombre de usuario.
      */
     public String getNick() {
         return nick;
@@ -160,31 +163,9 @@ public class ClienteConnection implements Runnable {
         return null;
     }
 
-    public void EnviarJSON(String jsonString) {
-        try {
-            // Indicar que se está enviando JSON
-            this.getEnvioDatos().writeUTF("JSON");
-            // Enviar la cadena JSON
-            this.getEnvioDatos().writeUTF(jsonString);
-            this.getEnvioDatos().flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String RecibirJSON() {
-        try {
-            String tipoMensaje = this.getEntradaDatos().readUTF();
-            if (tipoMensaje.equals("JSON")) {
-                String jsonString = this.getEntradaDatos().readUTF();
-                return jsonString;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
+    /**
+     * Inicia la ejecución del hilo que recibe mensajes del servidor.
+     */
     @Override
     public void run() {
         System.out.println("Se inicio el juego");

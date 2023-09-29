@@ -11,7 +11,7 @@ import java.net.Socket;
 
 
 /**
- * Clase de servidor que se encarga de recibir los mensajes y reenviarlos
+ * Clase de servidor que se encarga de recibir los mensajes de los clientes y reenviarlos a los demás.
  */
 public class Recepcion implements Runnable {
 
@@ -21,14 +21,15 @@ public class Recepcion implements Runnable {
     public Cola<Cliente> clienteCola;
 
     /**
-     * Crea una instancia de servidor usando una recepcion
+     * Constructor de la clase Recepcion.
+     * Inicializa la cola de clientes.
      */
     public Recepcion(){
         this.clienteCola = new Cola<>();
     }
 
     /**
-     * Inicia el servidor y crea una conexion propia
+     * Inicia la escucha del servidor y acepta conexiones de clientes.
      */
     @Override
     public void run() {

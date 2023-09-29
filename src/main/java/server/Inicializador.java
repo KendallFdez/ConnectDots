@@ -11,17 +11,29 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que se encarga de inicializar el juego y ejecutarlo.
+ */
 public class Inicializador{
 
     private Recepcion recepcion;
 
     private Juego juego;
 
+    /**
+     * Constructor de la clase Inicializador.
+     *
+     * @param recepcion La instancia de la clase Recepcion.
+     * @param juego La instancia de la clase Juego.
+     */
     public Inicializador(Recepcion recepcion, Juego juego) {
         this.recepcion = recepcion;
         this.juego = juego;
     }
 
+    /**
+     * Inicializa el juego agregando los clientes a la cola de clientes del juego.
+     */
     private void Inicializar()
     {
         while(recepcion.clienteCola.getSize()>0)
@@ -31,7 +43,9 @@ public class Inicializador{
 
         juego.iniciar();
     }
-
+    /**
+     * Ejecuta el juego.
+     */
     public void ejecutar() {
         System.out.println("Ejecutando");
         long start = 0;
@@ -76,9 +90,6 @@ public class Inicializador{
             e.printStackTrace();
         }
     }
-
-
-
 
 
 }

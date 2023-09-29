@@ -13,6 +13,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
+
+/**
+ * Clase que representa el juego y se encarga de gestionar las conexiones de los clientes, el estado del juego y la lógica del juego.
+ */
 public class Juego  implements Runnable{
 
     ConcurrentHashMap<Integer, Cliente> conexiones;
@@ -27,13 +31,19 @@ public class Juego  implements Runnable{
 
     private boolean ejecutandoJuego = true;
 
+    /**
+     * Constructor de la clase Juego.
+     * Inicializa el juego con una matriz vacía y un estado en espera.
+     */
     public Juego(){
         this.conexiones = new ConcurrentHashMap<>();
         this.listaCliente = new ListaDoble<>();
         this.estado = JuegoEstado.enEspera;
         this.matrizJuego = new MatrizJuego();
     }
-
+    /**
+     * Inicia el juego y establece el turno del primer cliente.
+     */
     public void iniciar()
     {
         this.estado = JuegoEstado.iniciado;
@@ -42,16 +52,32 @@ public class Juego  implements Runnable{
         this.enviarMensajeATodos(Comandos.GetComandoServerIniciado(clienteTurnoActual.getData().getId(), clienteTurnoActual.getData().getNombre()));
     }
 
+    /**
+     * Verifica si el juego está en curso.
+     *
+     * @return Verdadero si el juego está en curso, falso en caso contrario.
+     */
     public boolean estaIniciado()
     {
         return this.estado == JuegoEstado.iniciado;
     }
 
+    /**
+     * Verifica si el juego ha finalizado.
+     *
+     * @return Verdadero si el juego ha finalizado, falso en caso contrario.
+     */
     public boolean estaFinalizado()
     {
         return this.estado == JuegoEstado.finalizado;
     }
 
+    /**
+     * Agrega un cliente al juego si el juego está en espera.
+     *
+     * @param cliente El cliente a agregar al juego.
+     * @return Verdadero si el cliente fue agregado al juego, falso en caso contrario.
+     */
     public boolean agregarCliente(Cliente cliente)
     {
         if(this.estado.equals(JuegoEstado.enEspera))
@@ -65,7 +91,11 @@ public class Juego  implements Runnable{
         return false;
     }
 
-
+    /**
+     * Envía un mensaje a todos los clientes conectados al juego.
+     *
+     * @param jsonString El mensaje a enviar en formato JSON.
+     */
     public void enviarMensajeATodos(String jsonString) {
         Enumeration<Integer> llaves = this.conexiones.keys();
         while (llaves.hasMoreElements()) {
@@ -76,11 +106,8 @@ public class Juego  implements Runnable{
         }
     }
 
-
-
-
     /**
-     * Revisa la bandeja de cada conexion para ver si tienen mensajes pendientes y los envia
+     * Ejecuta el hilo que se encarga de gestionar las conexiones de los clientes y la lógica del juego.
      */
     @Override
     public void run() {

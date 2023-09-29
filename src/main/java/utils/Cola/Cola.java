@@ -1,24 +1,22 @@
 package utils.Cola;
 
 /**
- * Clase cola para poner a los jugadores que buscan partida
+ * Clase que implementa una cola genérica para almacenar elementos de tipo T.
  */
 public class Cola<T> {
-    /**
-     * Representa el ultimo elmento de la cola
-     */
+    // Representa el último elemento de la cola
     private Nodo<T> rear;
-    /**
-     * Representa el primer elmento de la cola
-     */
+
+    // Representa el primer elemento de la cola
     private Nodo<T> front;
-    /**
-     * Representa la cantidad de elementos de la cola
-     */
+
+    // Representa la cantidad de elementos de la cola
     private int size;
 
     /**
-     * @return Si la cola esta vacia
+     * Método que verifica si la cola está vacía.
+     *
+     * @return Verdadero si la cola está vacía, falso en caso contrario.
      */
     public boolean isEmpty() {
         boolean vacio=false;
@@ -29,7 +27,8 @@ public class Cola<T> {
     }
 
     /**
-     * Inicializa la cola
+     * Constructor de la clase Cola.
+     * Inicializa la cola vacía.
      */
     public Cola(){
         front=null;
@@ -38,7 +37,9 @@ public class Cola<T> {
     }
 
     /**
-     * @param element Añade un nuevo elemento al final de la cola
+     * Método que añade un nuevo elemento al final de la cola.
+     *
+     * @param element El elemento a añadir a la cola.
      */
     public void enqueue(T element){
         Nodo<T> nodoNuevo =new Nodo<T>(element);
@@ -54,7 +55,9 @@ public class Cola<T> {
     }
 
     /**
-     * @return Elimina el primer elemento de la cola y lo devuelve
+     * Método que elimina el primer elemento de la cola y lo devuelve.
+     *
+     * @return El primer elemento de la cola.
      */
     public Nodo<T> dequeue(){
         Nodo<T> nodoEliminado = null;
@@ -74,7 +77,9 @@ public class Cola<T> {
     }
 
     /**
-     * @return Devuelve el primer elemento de la cola sin eliminarlo
+     * Método que devuelve el primer elemento de la cola sin eliminarlo.
+     *
+     * @return El primer elemento de la cola.
      */
     public Nodo<T> peek(){
         Nodo<T> primerNodo = null;
@@ -85,7 +90,9 @@ public class Cola<T> {
     }
 
     /**
-     * @return La cantidad de elementos de la cola
+     * Método que devuelve la cantidad de elementos de la cola.
+     *
+     * @return La cantidad de elementos de la cola.
      */
     public int getSize() {
         return size;

@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Clase que representa la lógica del juego y la comunicación con el servidor.
+ * Implementa Runnable para permitir la ejecución concurrente.
  */
 public class Juego implements Runnable{
 
@@ -44,7 +45,9 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Comprueba si el juego está iniciado.
+     * Comprueba si el juego está en curso.
+     *
+     * @return Verdadero si el juego está en curso, falso en caso contrario.
      */
     public boolean estaJuegoIniciado()
     {
@@ -52,9 +55,9 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Obtiene la instancia de la clase Juego.
+     * Obtiene la instancia única de la clase Juego (patrón Singleton).
      *
-     * @return La instancia de la clase Juego.
+     * @return La instancia única de la clase Juego.
      */
     public static Juego GetInstance()
     {
@@ -67,16 +70,17 @@ public class Juego implements Runnable{
         return instance;
     }
     /**
-     * Restablece la instancia de la clase Juego.
+     * Reinicia la instancia única de la clase Juego a una nueva instancia.
      */
     public static void ResetInstance()
     {
         instance = new Juego();
     }
+
     /**
      * Comprueba si es el turno del usuario actual.
      *
-     * @return boolean si es el turno del usuario.
+     * @return Verdadero si es el turno del usuario actual, falso en caso contrario.
      */
     public boolean esMiTurno()
     {
@@ -87,7 +91,6 @@ public class Juego implements Runnable{
      * Establece el controlador del juego.
      *
      * @param gameController El controlador del juego.
-     * @return boolean si se estableció el controlador con éxito
      */
     public void setGameController(GameController gameController)
     {
@@ -98,7 +101,6 @@ public class Juego implements Runnable{
      * Establece el controlador de espera.
      *
      * @param esperaController El controlador de espera.
-     * @return boolean si se estableció el controlador con éxito
      */
     public void setEsperaController(EsperaController esperaController) {
         this.esperaController = esperaController;
@@ -115,10 +117,10 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Realiza la conexión al servidor.
+     * Realiza la conexión al servidor y establece los flujos de entrada y salida de datos.
      *
      * @param name El nombre del usuario.
-     * @return boolean si la conexión fue exitosa.
+     * @return Verdadero si la conexión se realizó con éxito, falso en caso contrario.
      */
     public boolean Conectarse(String name)
     {
@@ -147,14 +149,17 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Obtiene el usuario actual.
+     * Obtiene el usuario que está jugando actualmente.
      *
-     * @return El usuario actual.
+     * @return El usuario que está jugando actualmente.
      */
     public Usuario getUsuario() {
         return usuario;
     }
 
+    /**
+     * Ejecuta el hilo que recibe constantemente mensajes del servidor y realiza acciones en función de los comandos recibidos.
+     */
     @Override
     public void run() {
         JSONObject receivedJson = null;
@@ -178,7 +183,7 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Analiza los comandos recibidos del servidor antes del inicio del juego y toma acciones en consecuencia.
+     * Analiza los comandos recibidos del servidor antes del inicio del juego y realiza acciones en función de esos comandos.
      *
      * @param jsonObject El objeto JSON que contiene el comando recibido del servidor.
      */
@@ -199,7 +204,7 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Finaliza el juego y muestra un diálogo de ganador.
+     * Finaliza el juego, muestra un diálogo con el nombre del ganador y reinicia la interfaz de espera.
      *
      * @param ganador El nombre del jugador ganador.
      */
@@ -218,7 +223,7 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Maneja el comando "serverIniciado" del servidor.
+     * Maneja el comando "serverIniciado" del servidor, que indica el inicio del juego.
      *
      * @param jsonObject El objeto JSON que contiene los datos del servidor.
      */
@@ -235,7 +240,7 @@ public class Juego implements Runnable{
     }
 
     /**
-     * Actualiza la información del juego en función de los comandos recibidos del servidor.
+     * Actualiza la información del juego en la interfaz de usuario en función de los datos recibidos del servidor.
      *
      * @param jsonObject El objeto JSON que contiene la información del juego.
      */

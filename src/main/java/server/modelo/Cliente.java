@@ -14,9 +14,9 @@ public class Cliente {
     /**
      * Constructor de la clase Cliente.
      *
-     * @param clienteConnection La conexión del cliente.
+     * @param clienteConnection La conexión del cliente con el servidor.
      * @param nombre El nombre del cliente.
-     * @param id El identificador del cliente.
+     * @param id El identificador único del cliente.
      */
     public Cliente(ClienteConnection clienteConnection, String nombre, int id) {
         this.clienteConnection = clienteConnection;
@@ -33,16 +33,17 @@ public class Cliente {
     }
 
     /**
-     * Comprueba si el cliente está conectado.
+     * Comprueba si el cliente está conectado al servidor.
      *
-     * @return boolean si el cliente está conectado.
+     * @return Verdadero si el cliente está conectado al servidor, falso en caso contrario.
      */
     public boolean estaConectado()
     {
         return clienteConnection.conectado;
     }
+
     /**
-     * Inicia la escucha del cliente en un hilo separado.
+     * Inicia un hilo independiente para escuchar mensajes del servidor a través de la conexión del cliente.
      */
     public void iniciarEscucha()
     {
@@ -69,16 +70,18 @@ public class Cliente {
     }
 
     /**
-     * Obtiene el identificador del cliente.
+     * Obtiene el identificador único del cliente.
      *
-     * @return El identificador del cliente.
+     * @return El identificador único del cliente.
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Establece el identificador del cliente.
+     * Establece el identificador único del cliente.
+     *
+     * @param id El nuevo identificador único del cliente.
      */
     public void setId(int id) {
         this.id = id;

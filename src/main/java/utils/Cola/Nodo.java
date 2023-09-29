@@ -1,21 +1,20 @@
 package utils.Cola;
 
 /**
- * Clase nodo que contiene valores para añadirlos a una lista enlazada
+ * Clase Nodo que implementa un nodo genérico para una lista enlazada.
+ * Cada nodo contiene un valor de tipo T y un puntero al siguiente nodo en la lista.
  */
 public class Nodo<T> {
-    /**
-     * Representa el valo del nodo
-     */
+    // Representa el valor del nodo
     private T data;
-    /**
-     * Representa el nodo al que apunta este nodo(siguiente)
-     */
+    // Representa el siguiente nodo en la lista enlazada
     private Nodo<T> next;
 
     /**
-     * Constructor del nodo
-     * @param data el valor del nodo
+     * Constructor de la clase Nodo.
+     * Inicializa el nodo con el valor proporcionado y establece el siguiente nodo como null.
+     *
+     * @param data El valor del nodo.
      */
     public Nodo(T data) {//De momento hago el nodo para int porque no se con que se va trabajar todavia
         this.data = data;
@@ -23,28 +22,36 @@ public class Nodo<T> {
     }
 
     /**
-     * @return El valor del nodo
+     * Método que devuelve el valor del nodo.
+     *
+     * @return El valor del nodo.
      */
     public T getData() {
         return data;
     }
 
     /**
-     * @param data Cambia el valor del nodo
+     * Método que cambia el valor del nodo.
+     *
+     * @param data El nuevo valor del nodo.
      */
     public void setData(T data) {
         this.data = data;
     }
 
     /**
-     * @return El siguiente nodo
+     * Método que devuelve el siguiente nodo en la lista enlazada.
+     *
+     * @return El siguiente nodo en la lista enlazada.
      */
     public Nodo<T> getNext() {
         return next;
     }
 
     /**
-     * @param next Cambia al nodo hacia el que apunta este nodo
+     * Método que cambia el siguiente nodo en la lista enlazada.
+     *
+     * @param next El nuevo siguiente nodo en la lista enlazada.
      */
     public void setNext(Nodo<T> next) {
         this.next = next;
