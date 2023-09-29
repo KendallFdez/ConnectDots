@@ -14,7 +14,7 @@ public class Cola<T> {
     private int size;
 
     /**
-     * Método que verifica si la cola está vacía.
+     * Verifica si la cola está vacía.
      *
      * @return Verdadero si la cola está vacía, falso en caso contrario.
      */
@@ -37,7 +37,7 @@ public class Cola<T> {
     }
 
     /**
-     * Método que añade un nuevo elemento al final de la cola.
+     * Añade un nuevo elemento al final de la cola.
      *
      * @param element El elemento a añadir a la cola.
      */
@@ -55,7 +55,7 @@ public class Cola<T> {
     }
 
     /**
-     * Método que elimina el primer elemento de la cola y lo devuelve.
+     * Elimina el primer elemento de la cola y lo devuelve.
      *
      * @return El primer elemento de la cola.
      */
@@ -77,7 +77,7 @@ public class Cola<T> {
     }
 
     /**
-     * Método que devuelve el primer elemento de la cola sin eliminarlo.
+     * Obtiene el primer elemento de la cola sin eliminarlo.
      *
      * @return El primer elemento de la cola.
      */
@@ -90,7 +90,7 @@ public class Cola<T> {
     }
 
     /**
-     * Método que devuelve la cantidad de elementos de la cola.
+     * Obtiene la cantidad de elementos de la cola.
      *
      * @return La cantidad de elementos de la cola.
      */

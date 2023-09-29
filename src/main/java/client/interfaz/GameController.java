@@ -15,12 +15,22 @@ import javafx.scene.control.ButtonBar.ButtonData;
 
 import java.util.Optional;
 
+/**
+ * Clase que controla el juego.
+ * @version 1.0
+ */
 public class GameController {
 
     ListaDoble<Label> listaCuadros = new ListaDoble<Label>();
     ListaDoble<Button> lineasVerticales = new ListaDoble<Button>();
     ListaDoble<Button> lineasHorizontales = new ListaDoble<Button>();
 
+    /**
+     * Configura el cambio de color para los botones.
+     *
+     * @param botones la lista de botones para los cuales se configurará el cambio de color.
+     * @param tipo el tipo de cambio de color, puede ser "horizontal" o "vertical".
+     */
     public void configurarCambiarColor(ListaDoble<Button> botones, String tipo)
     {
         NodoDoble<Button> nodoDoble = botones.getHead();
@@ -33,6 +43,12 @@ public class GameController {
         }
     }
 
+    /**
+     * Configura la pantalla del juego.
+     *
+     * Este método configura las líneas horizontales, las líneas verticales y los cuadros de la pantalla.
+     * También configura el cambio de color para las líneas horizontales y verticales.
+     */
     public void configurarPantalla()
     {
         this.configurarLineasHorizontales();
@@ -205,7 +221,7 @@ public class GameController {
         listaCuadros.insertLast(nombreCuadrado11_11);
     }
 
-
+//botones de la interfaz
     @FXML
     private Button boton0_1;
 
@@ -574,7 +590,13 @@ public class GameController {
     @FXML
     private Label nombreJugador;
 
-
+    /**
+     * Cambia el color de un botón.
+     *
+     * @param boton el botón cuyo color se cambiará.
+     * @param index el índice del botón.
+     * @param tipo el tipo de cambio de color, puede ser "horizontal" o "vertical".
+     */
     protected void cambiarColor(Button boton, int index, String tipo) {
         boton.setOnAction(event->{
             if(Juego.GetInstance().esMiTurno())
@@ -583,6 +605,13 @@ public class GameController {
             }
         });
     }
+
+    /**
+     * Crea un diálogo con un título y un mensaje.
+     *
+     * @param name el nombre del jugador.
+     * @return el diálogo creado.
+     */
     public Dialog<String> CreateDialog(String name)
     {
         //Creating a dialog
@@ -599,24 +628,50 @@ public class GameController {
     }
 
 
-
+    /**
+     * Método que se llama cuando se hace clic en el botón VerListas.
+     *
+     * @param actionEvent el evento de acción que activó este método.
+     */
     @FXML
     public void VerListas(ActionEvent actionEvent) {
 
     }
+    /**
+     * Cambia el nombre de la persona que tiene el turno.
+     *
+     * @param nombreUsuario el nuevo nombre de la persona que tiene el turno.
+     */
     public void cambiarNombre(String nombreUsuario) {
         personaTurno.setText(nombreUsuario);
     }
 
+    /**
+     * Cambia el nombre del usuario actual.
+     *
+     * @param nombreUsuario el nuevo nombre del usuario actual.
+     */
     public void cambiarUsuarioActual(String nombreUsuario) {
         nombreJugador.setText(nombreUsuario);
     }
 
+    /**
+     * Pone el nombre del usuario en un cuadro.
+     *
+     * @param numeroCuadro el índice del cuadro en el que se colocará el nombre.
+     * @param nombreUsuario el nombre del usuario que se colocará en el cuadro.
+     */
     public void ponerNombreCuadro(int numeroCuadro, String nombreUsuario) {
         NodoDoble<Label> nodo = this.listaCuadros.obtenerNodoPorIndice(numeroCuadro);
         nodo.getData().setText(nombreUsuario);
     }
 
+    /**
+     * Pone una línea en la partida.
+     *
+     * @param numeroLinea el índice de la línea que se colocará.
+     * @param tipo el tipo de línea que se colocará, puede ser "horizontal" o "vertical".
+     */
     public void ponerLinea(int numeroLinea, String tipo) {
         NodoDoble<Button> nodo = null;
         if(tipo.equals("horizontal"))
@@ -631,6 +686,11 @@ public class GameController {
         nodo.getData().setStyle("-fx-background-color: #ff0000; ");
         nodo.getData().setDisable(true);
     }
+    /**
+     * Método que se llama cuando se hace clic en el botón VerListas.
+     *
+     * @param actionEvent el evento de acción que activó este método.
+     */
     public void verListas(ActionEvent actionEvent) {
 
     }

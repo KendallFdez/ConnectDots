@@ -22,7 +22,7 @@ public class Nodo<T> {
     }
 
     /**
-     * Método que devuelve el valor del nodo.
+     * Obtiene el valor del nodo.
      *
      * @return El valor del nodo.
      */
@@ -31,7 +31,7 @@ public class Nodo<T> {
     }
 
     /**
-     * Método que cambia el valor del nodo.
+     * Establece el valor del nodo.
      *
      * @param data El nuevo valor del nodo.
      */
@@ -40,7 +40,7 @@ public class Nodo<T> {
     }
 
     /**
-     * Método que devuelve el siguiente nodo en la lista enlazada.
+     * Obtiene el siguiente nodo en la lista enlazada.
      *
      * @return El siguiente nodo en la lista enlazada.
      */
@@ -49,7 +49,7 @@ public class Nodo<T> {
     }
 
     /**
-     * Método que cambia el siguiente nodo en la lista enlazada.
+     * Establece el siguiente nodo en la lista enlazada.
      *
      * @param next El nuevo siguiente nodo en la lista enlazada.
      */

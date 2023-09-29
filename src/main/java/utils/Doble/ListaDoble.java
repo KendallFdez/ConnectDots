@@ -4,29 +4,27 @@ package utils.Doble;
 import utils.Cola.Nodo;
 
 /**
- * Clase listaDoble(doblemente enlazada) para implementar la malla del juego
+ * Clase ListaDoble que implementa una lista doblemente enlazada para almacenar elementos de tipo T.
+ * Esta lista se utiliza para implementar la malla del juego.
  */
 public class ListaDoble<T> {
-    /**
-     * Representa el primer elemento de la lista
-     */
+
+    // Representa el primer elemento de la lista
     private NodoDoble<T> head;
 
     public NodoDoble<T> getHead() {
         return head;
     }
 
-    /**
-     * Representa el ultimo elemento de la lista
-     */
+    // Representa el último elemento de la lista
     private NodoDoble<T> tail;
-    /**
-     * Representa el largo de la lista
-     */
+
+    // Representa el largo de la lista
     private int length;
 
     /**
-     * Constructor
+     * Constructor de la clase ListaDoble.
+     * Inicializa la lista vacía.
      */
     public ListaDoble(){
         this.head=null;
@@ -35,22 +33,27 @@ public class ListaDoble<T> {
     }
 
     /**
-     * @return Si la lista esta vacia
+     * Verifica si la lista está vacía.
+     *
+     * @return Verdadero si la lista está vacía, falso en caso contrario.
      */
     public boolean isEmpty(){
         return length==0;
     }
 
     /**
-     * @return El largo de la lista
+     * Obtiene la longitud de la lista.
+     *
+     * @return La longitud de la lista.
      */
     public int getLength(){
         return length;
     }
 
     /**
-     * Inseta al final de la lista
-     * @param value el valor a insertar
+     * Inserta un nuevo nodo al final de la lista.
+     *
+     * @param value El valor a insertar en el nuevo nodo.
      */
     public void insertLast(T value){
         NodoDoble<T> newNode = new NodoDoble<T>(value);
@@ -66,8 +69,9 @@ public class ListaDoble<T> {
     }
 
     /**
-     * Inserta al principio de la lista
-     * @param value el valor a insertar
+     * Inserta un nuevo nodo al principio de la lista.
+     *
+     * @param value El valor a insertar en el nuevo nodo.
      */
     public void insertFirst(T value){
         NodoDoble<T> newNode = new NodoDoble<T>(value);
@@ -87,7 +91,7 @@ public class ListaDoble<T> {
     }
 
     /**
-     * Elimina al principio de la lista
+     * Elimina el primer nodo de la lista.
      */
     public void deleteFirst(){
         if(isEmpty()){
@@ -107,7 +111,7 @@ public class ListaDoble<T> {
     }
 
     /**
-     * Elimina al final de la lista
+     * Elimina el último nodo de la lista.
      */
     public void deleteLast(){
         if(isEmpty()){
@@ -127,7 +131,7 @@ public class ListaDoble<T> {
     }
 
     /**
-     * Imprime la lista
+     * Imprime los elementos de la lista en orden.
      */
     public void displayForward(){
         if(head==null){
@@ -146,6 +150,12 @@ public class ListaDoble<T> {
         }
     }
 
+    /**
+     * Devuelve el nodo en la posición especificada por el índice.
+     *
+     * @param i El índice del nodo a devolver.
+     * @return El nodo en la posición especificada por el índice.
+     */
     public NodoDoble<T> obtenerNodoPorIndice(int i){
         if(i<0){
             return null;
@@ -162,6 +172,13 @@ public class ListaDoble<T> {
         }
         return null;
     }
+
+    /**
+     * Devuelve la posición del nodo que contiene el valor especificado.
+     *
+     * @param data El valor a buscar en la lista.
+     * @return La posición del nodo que contiene el valor especificado, o -1 si el valor no se encuentra en la lista.
+     */
     public int getNodePosition(T data) {
         NodoDoble<T> current = head;
         int position = 1;
