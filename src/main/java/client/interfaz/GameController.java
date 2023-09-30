@@ -21,9 +21,9 @@ import java.util.Optional;
  */
 public class GameController {
 
-    ListaDoble<Label> listaCuadros = new ListaDoble<Label>();
-    ListaDoble<Button> lineasVerticales = new ListaDoble<Button>();
-    ListaDoble<Button> lineasHorizontales = new ListaDoble<Button>();
+    public ListaDoble<Label> listaCuadros = new ListaDoble<Label>();
+    public ListaDoble<Button> lineasVerticales = new ListaDoble<Button>();
+    public ListaDoble<Button> lineasHorizontales = new ListaDoble<Button>();
 
     /**
      * Configura el cambio de color para los botones.
@@ -685,6 +685,32 @@ public class GameController {
 
         nodo.getData().setStyle("-fx-background-color: #ff0000; ");
         nodo.getData().setDisable(true);
+    }
+    public void seleccionarLinea(int numeroLinea, String tipo) {
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = this.lineasHorizontales.obtenerNodoPorIndice(numeroLinea);
+        }
+        else
+        {
+            nodo = this.lineasVerticales.obtenerNodoPorIndice(numeroLinea);
+        }
+
+        nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+    }
+    public void deseleccionarLinea(int numeroLinea, String tipo) {
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = this.lineasHorizontales.obtenerNodoPorIndice(numeroLinea);
+        }
+        else
+        {
+            nodo = this.lineasVerticales.obtenerNodoPorIndice(numeroLinea);
+        }
+
+        nodo.getData().setStyle("-fx-background-color: #ff0000; ");
     }
     /**
      * Método que se llama cuando se hace clic en el botón VerListas.

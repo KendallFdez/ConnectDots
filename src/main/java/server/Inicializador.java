@@ -52,7 +52,7 @@ public class Inicializador{
         long end ;
         boolean inicializando = false;
         long segundosEspera = 5;
-        int cantidadJugadores = 2;
+        int cantidadJugadores = 1;
 
         try {
             while(true){

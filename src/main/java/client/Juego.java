@@ -1,6 +1,7 @@
 package client;
 
 import client.Model.Usuario;
+import client.controller.Controller;
 import client.interfaz.EsperaController;
 import client.interfaz.GameController;
 import client.socket.ServerConnection;
@@ -13,7 +14,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Iterator;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -37,6 +37,8 @@ public class Juego implements Runnable{
     private boolean leyendoMensajes = true;
 
     private EsperaController esperaController;
+
+    private Controller controller;
 
     private Juego ()
     {
@@ -95,6 +97,8 @@ public class Juego implements Runnable{
     public void setGameController(GameController gameController)
     {
         this.gameController = gameController;
+        this.controller = new Controller(gameController);
+        new Thread(this.controller).start();
     }
 
     /**
@@ -219,6 +223,7 @@ public class Juego implements Runnable{
 
         this.leyendoMensajes = false;
         this.GetConnection().finalizarConexion();
+        this.controller.terminarEjecucion();
 
     }
 
