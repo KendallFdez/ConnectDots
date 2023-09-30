@@ -4,13 +4,13 @@ module client.interfaz {
     requires java.xml;
     requires org.json;
     requires org.apache.commons.lang3;
-
+    requires RXTXcomm;
+    requires java.desktop;
 
     opens client.interfaz to javafx.fxml;
     exports client.interfaz;
 
     opens client.interfaztest to javafx.fxml;
-    exports client.interfaztest;
     exports server.modelo;
     exports utils.Doble;
     exports server;

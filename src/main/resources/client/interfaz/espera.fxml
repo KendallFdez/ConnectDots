@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="315.0" prefWidth="600.0" style="-fx-background-color: #2A3A52;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.interfaz.EsperaController">
+<AnchorPane prefHeight="315.0" prefWidth="600.0" style="-fx-background-color: #2A3A52;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.interfaz.EsperaController">
    <children>
       <Label layoutX="179.0" layoutY="42.0" text="Connect Dots" textFill="WHITE">
          <font>
@@ -19,22 +19,12 @@
             <Font name="Bodoni MT" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="225.0" layoutY="191.0" text="Posición en la cola" textFill="WHITE">
-         <font>
-            <Font name="Bodoni MT" size="19.0" />
-         </font>
-      </Label>
       <Label fx:id="posicionCola" layoutX="266.0" layoutY="216.0" prefHeight="25.0" prefWidth="70.0" textFill="WHITE">
          <font>
             <Font name="Bodoni MT" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="verPosicion" layoutX="376.0" layoutY="194.0" mnemonicParsing="false" onAction="#actualizarPosicion" prefHeight="19.0" prefWidth="35.0" text="Ver">
-         <font>
-            <Font size="9.0" />
-         </font>
-      </Button>
-      <Button fx:id="botonAbrir" layoutX="266.0" layoutY="254.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="19.0" prefWidth="70.0" text="Conectarse">
+      <Button fx:id="botonAbrir" layoutX="266.0" layoutY="186.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="19.0" prefWidth="70.0" text="Conectarse">
          <font>
             <Font size="9.0" />
          </font>
