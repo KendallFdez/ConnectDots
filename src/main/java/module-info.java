@@ -7,6 +7,8 @@ module client.interfaz {
     //requires sp.tty;
     requires java.desktop;
     requires RXTXcomm;
+    requires sp.tty;
+
 
 
     opens client.interfaz to javafx.fxml;

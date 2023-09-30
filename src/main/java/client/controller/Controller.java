@@ -6,7 +6,11 @@ import com.serialpundit.serial.SerialComManager;
 
 import client.interfaz.GameController;
 import javafx.application.Platform;
+import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
+import utils.Doble.ListaDoble;
+import utils.Doble.NodoDoble;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -61,6 +65,106 @@ public class Controller implements Runnable {
             e.printStackTrace();
         }
     }
+    public void ObtenerNodoDerecho(int numeroLinea, String tipo){
+        GameController gameController = new GameController();
+        ListaDoble<Button> lineasHorizontales=gameController.getLineasHorizontales();
+        ListaDoble<Button> lineasVerticales=gameController.getLineasVerticales();
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = lineasHorizontales.obtenerNodoPorIndice(numeroLinea+1);
+        }
+        else
+        {
+            nodo = lineasVerticales.obtenerNodoPorIndice(numeroLinea+1);
+        }
+        try{
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    public void ObtenerNodoIzquierdo(int numeroLinea, String tipo){
+        GameController gameController = new GameController();
+        ListaDoble<Button> lineasHorizontales=gameController.getLineasHorizontales();
+        ListaDoble<Button> lineasVerticales=gameController.getLineasVerticales();
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = lineasHorizontales.obtenerNodoPorIndice(numeroLinea-1);
+        }
+        else
+        {
+            nodo = lineasVerticales.obtenerNodoPorIndice(numeroLinea+1);
+        }
+        try{
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    public void ObtenerNodoSuperior(int numeroLinea, String tipo){
+        GameController gameController = new GameController();
+        ListaDoble<Button> lineasHorizontales=gameController.getLineasHorizontales();
+        ListaDoble<Button> lineasVerticales=gameController.getLineasVerticales();
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = lineasHorizontales.obtenerNodoPorIndice(numeroLinea-6);
+        }
+        else
+        {
+            nodo = lineasVerticales.obtenerNodoPorIndice(numeroLinea-7);
+        }
+        try{
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    public void ObtenerNodoInferior(int numeroLinea, String tipo){
+        GameController gameController = new GameController();
+        ListaDoble<Button> lineasHorizontales=gameController.getLineasHorizontales();
+        ListaDoble<Button> lineasVerticales=gameController.getLineasVerticales();
+        NodoDoble<Button> nodo = null;
+        if(tipo.equals("horizontal"))
+        {
+            nodo = lineasHorizontales.obtenerNodoPorIndice(numeroLinea+6);
+        }
+        else
+        {
+            nodo = lineasVerticales.obtenerNodoPorIndice(numeroLinea+7);
+        }
+        try{
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #ff0000; ");
+            Thread.sleep(250);
+            nodo.getData().setStyle("-fx-background-color: #FFFFFF; ");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 
     public void ejecutarTecla(String data) {
         if (data == null){
@@ -73,7 +177,7 @@ public class Controller implements Runnable {
             if (dataValue % 0b10 == 1) {
                 if(Juego.GetInstance().esMiTurno())
                 {
-                    Juego.GetInstance().GetConnection().Enviar_mensaje(Comandos.GetComandoPonerLinea(index, tipo));
+                    //Juego.GetInstance().GetConnection().Enviar_mensaje(Comandos.GetComandoPonerLinea(index, tipo));
                 }
                 Platform.runLater(() -> {
                     System.out.println("Actualizando informacion");

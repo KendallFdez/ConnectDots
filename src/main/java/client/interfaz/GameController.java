@@ -22,7 +22,17 @@ import java.util.Optional;
 public class GameController {
 
     public ListaDoble<Label> listaCuadros = new ListaDoble<Label>();
+
+    public ListaDoble<Button> getLineasVerticales() {
+        return lineasVerticales;
+    }
+
     public ListaDoble<Button> lineasVerticales = new ListaDoble<Button>();
+
+    public ListaDoble<Button> getLineasHorizontales() {
+        return lineasHorizontales;
+    }
+
     public ListaDoble<Button> lineasHorizontales = new ListaDoble<Button>();
 
     /**
