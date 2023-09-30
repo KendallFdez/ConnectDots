@@ -4,6 +4,7 @@ module client.interfaz {
     requires java.xml;
     requires org.json;
     requires org.apache.commons.lang3;
+    requires sp.tty;
 
 
     opens client.interfaz to javafx.fxml;
